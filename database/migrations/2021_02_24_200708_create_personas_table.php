@@ -15,7 +15,6 @@ class CreatePersonasTable extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_recinto');
             $table->integer('id_mesa');
             $table->string('persona');
             $table->string('celular');
