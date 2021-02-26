@@ -22,12 +22,12 @@
       max-height: 800px;
       height: 100vh;
     }
-    .primario{background-color:rgba(88,174,255,0.3);}
+    .primario{background-color:rgba(255,255,255,0.5);}
     </style>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></head>
   <body>
-<div class="container-fluid primario" style="height: 100vh;">
-    <div class="container-fluid themed-container rounded" style="border:solid 1px #117204; margin:3px; height: 98vh;" >
+<div class="container-fluid " style="height: 100vh;">
+    <div class="container-fluid themed-container rounded primario" style="border:solid 1px #117204; margin:3px; height: 98vh;" >
 
     <div class="container-fluid themed-container">
       <div class="row">
@@ -127,15 +127,15 @@
       series.hiddenState.properties.opacity = 1;
       series.hiddenState.properties.endAngle = -90;
       series.hiddenState.properties.startAngle = -90;
-      series.labels.template.fill = am4core.color("white");
+      series.labels.template.fill = am4core.color("black");
       //series.slices.template.fill = am4core.color("red");
-      //series.alignLabels = false;
+      series.alignLabels = false;
       series.slices.template.stroke = am4core.color("#fff");
 
 
       chart.legend = new am4charts.Legend();
       //chart.legend.position = "right";
-      series.legendSettings.labelText = "[bold {color}]{name} - {value}[/]";
+      series.legendSettings.labelText = "[bold ]{name} - {value}[/]";
       series.legendSettings.valueText = "{valueY.close}";
       series.legendSettings.itemValueText = "[bold]{valueY}[/bold]";
     </script>
