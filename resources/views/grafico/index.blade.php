@@ -128,8 +128,7 @@
       series.hiddenState.properties.endAngle = -90;
       series.hiddenState.properties.startAngle = -90;
       series.labels.template.fill = am4core.color("black");
-      //series.slices.template.fill = am4core.color("red");
-      series.alignLabels = false;
+
       series.slices.template.stroke = am4core.color("#fff");
       series.labels.template.fontSize = 25;
       series.labels.template.wrap = true;
