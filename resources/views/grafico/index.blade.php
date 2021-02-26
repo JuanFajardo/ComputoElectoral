@@ -19,8 +19,8 @@
 
     #chartdiv {
       width: 100%;
-      max-height: 800px;
-      height: 100vh;
+
+      height: 70vh;
     }
     .primario{background-color:rgba(255,255,255,0.5);}
     </style>
@@ -75,7 +75,7 @@
 
     am4core.useTheme(am4themes_animated);
 
-    var chart = am4core.create("chartdiv", am4charts.PieChart);//am4charts.PieChart3D
+    var chart = am4core.create("chartdiv", am4charts.PieChart3D);//am4charts.PieChart3D
 
       chart.data = [{
         "partido": "AS",
@@ -131,12 +131,15 @@
       //series.slices.template.fill = am4core.color("red");
       series.alignLabels = false;
       series.slices.template.stroke = am4core.color("#fff");
+      series.labels.template.fontSize = 25;
+      series.labels.template.wrap = true;
+
 
 
       chart.legend = new am4charts.Legend();
-      //chart.legend.position = "right";
-      series.legendSettings.labelText = "[bold ]{name} - {value}[/]";
+      chart.legend.position = "right";
+      series.legendSettings.labelText = "[font-size: 25px]{name} - {value}[/]";
       series.legendSettings.valueText = "{valueY.close}";
-      series.legendSettings.itemValueText = "[bold]{valueY}[/bold]";
+
     </script>
 </html>
