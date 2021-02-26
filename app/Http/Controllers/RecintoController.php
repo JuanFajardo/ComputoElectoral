@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Recinto;
+use App\Mesa;
 use Illuminate\Http\Request;
 
 class RecintoController extends Controller
 {
-  public function __construct(){
-    $this->middleware('auth');
-  }
 
   public function index(Request $request){
-    $datos = Recinto::all();
+    //'recinto', 'id_departamento', 'id_provincia', 'id_circ', 'id_municipio', 'id_distrito', 'id_zona'];
+    $datos = Recinto::Join('distritos', 'recintos.id_distrito', '=', 'distritos.id')
+                      ->join('zonas',   'recintos.id_zona', '=', 'zonas.id')
+                      ->select('recintos.*', 'distritos.distrito', 'zonas.zona')
+                      ->orderBy('recintos.recinto', 'asc')
+                      ->get();
     if ($request->ajax()) {
       return $datos;
     }else{
@@ -47,6 +50,16 @@ class RecintoController extends Controller
     }else{
       return redirect('/Recinto');
     }
+  }
+
+  public function getRecintos(){
+    $datos = Recinto::Select('id', 'recinto')->orderBy('recinto', 'asc')->get();
+    return $datos;
+  }
+
+  public function getMesa($id){
+    $datos = Mesa::Where('id_recinto', $id)->select('id', 'mesa', 'habilitados')->orderBy('mesa', 'asc')->get();
+    return $datos;
   }
 
 }
