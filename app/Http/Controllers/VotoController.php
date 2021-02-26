@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class VotoController extends Controller
 {
-  public function __construct(){
-    $this->middleware('auth');
-  }
+
 
   public function index(Request $request){
     $datos = Voto::all();
@@ -48,5 +46,24 @@ class VotoController extends Controller
       return redirect('/Voto');
     }
   }
+
+public function Grafico()
+{
+  $as=Voto::sum("as");
+  $mas=Voto::sum("mas");
+  $adn=Voto::sum("adn");
+  $jap=Voto::sum("jap");
+  $mcp=Voto::sum("mcp");
+  $ucs=Voto::sum("ucs");
+  $puka=Voto::sum("puka");
+  $mds=Voto::sum("mds");
+  $mts=Voto::sum("mts");
+  $fpv=Voto::sum("fpv");
+  $mop=Voto::sum("mop");
+  $nulo=Voto::sum("nulo");
+  $blanco=Voto::sum("blanco");
+
+  return view("grafico.index",compact("as","mas","adn","jap","mcp","ucs","puka","mds","mts","fpv","mop","nulo","blanco"));
+}
 
 }
