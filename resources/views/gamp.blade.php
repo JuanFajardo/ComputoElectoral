@@ -15,7 +15,7 @@
 
 <body>
     <div id="wrapper">
-        @include('profile')
+
         @include('menu')
 		<div id="page-wrapper">
 		  <div class="header">
@@ -24,9 +24,9 @@
         </h1>
 		  </div>
       <div id="page-inner">
-        <div class="row">
-				  <div class="col-md-12">
-					  <div class="panel panel-default">
+        <div class="row" style="background-color:#176F05;">
+				  <div class="col-md-12" >
+					  <div class="panel panel-success" >
 						  <div class="panel-heading">
 							@yield('titulo')
 						</div>
@@ -36,7 +36,7 @@
 					 </div>
 					</div>
         </div>
-				<footer><p>Soportado por: <a href="http://potosi.bp">WebThemez. Gobierno Autonomo Municipal de Potosí - {{date('Y')}}</a></p> </footer>
+				<footer><p>Soportado por: <a href="http://potosi.bp">WebThemez. </a></p> </footer>
       </div>
     </div>
   </div>
