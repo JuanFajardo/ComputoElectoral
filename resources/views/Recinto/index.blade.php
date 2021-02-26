@@ -1,18 +1,18 @@
 @extends('gamp')
 
 
-@section('title') Proyectos @endsection
+@section('title') Recintos @endsection
 
-@section('ventana') Proyectos
+@section('ventana') Recintos
 @endsection
-@section('descripcion') Administracion de los proyectos @endsection
+@section('descripcion') Administracion de los recintos @endsection
 @section('titulo')
-  <a href="{{asset('index.php')}}" style="color:#fff;" accesskey="i"></i> <u>I</u>nicio </a>
+  <a href="{{asset('index.php')}}" style="color:#000;" accesskey="i"></i> <u>I</u>nicio </a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a  style="color:#fff;" href="#modalAgregar"   data-toggle="modal" class="nuevo" data-target="" accesskey="n"> <li class="fa fa-plus"></li> <u>N</u>uevo Proyecto </a>
+  <a  style="color:#000;" href="#modalAgregar"   data-toggle="modal" class="nuevo" data-target="" accesskey="n"> <li class="fa fa-plus"></li> <u>N</u>uevo Recinto </a>
  @endsection
 
-@section('menuProyecto')
+@section('menuRecinto')
  class="active-menu"
 @endsection
 
@@ -65,7 +65,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body panel-body">
-                    {!! Form::open(['route'=>['Proyecto.update', ':DATO_ID'], 'method'=>'PATCH', 'id'=>'form-update' ])!!}
+                    {!! Form::open(['route'=>['Recinto.update', ':DATO_ID'], 'method'=>'PATCH', 'id'=>'form-update' ])!!}
                     <div class="row">
                       <div class="col-md-4">
                         <label for="apertura" > <b><i>Apertura</i></b> </label>
@@ -113,43 +113,33 @@
 @endif
 <table id="tablaGamp" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
   <thead>
+
     <tr>
       <th>Id</th>
-      <th>Apertura</th>
-      <th>Actividad</th>
       <th>Distrito</th>
-      <th>Presupuesto</th>
-      <th>Gastado</th>
-      <th>Total</th>
+      <th>Zona</th>
+      <th>Recinto</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     @foreach($datos as $dato)
       <tr data-id="{{ $dato->id }}">
+
         <td>{{ $dato->id }}</td>
-        <td>{{ $dato->apertura }}</td>
-        <td>{{ $dato->actividad }}</td>
-        <td>Dist.
-            @if ($dato->distrito == "0")
-            MD
-            @else
-              {{ $dato->distrito }}
-            @endif
-        </td>
-        <td>{{ number_format($dato->presupuesto,2,",",".") }}</td>
-        <td>{{ number_format($dato->gastado,2,",",".") }}</td>
-        <td>{{ number_format($dato->total,2,",",".") }}</td>
+        <td>{{ $dato->distrito }}</td>
+        <td>{{ $dato->zona }}</td>
+        <td>{{ $dato->recinto }}</td>
+
         <td>
-          <a href="#modalModifiar"  data-toggle="modal" data-target="" class="actualizar" style="color: #B8823B;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;
-          <a href="#"  data-toggle="modal" data-target="" style="color: #ff0000;" class="eliminar"> <li class="fa fa-trash"></li>Eliminar</a>
+          <a href="#modalModifiar"  data-toggle="modal" data-target="" class="btn btn-warning actualizar" style="color: #176F05;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;
         </td>
       </tr>
     @endforeach
   </tbody>
 </table>
 
-{!! Form::open(['route'=>['Proyecto.destroy', ':DATO_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
+{!! Form::open(['route'=>['Recinto.destroy', ':DATO_ID'], 'method'=>'DELETE', 'id'=>'form-delete']) !!}
 {!! Form::close() !!}
 @endsection
 
@@ -157,7 +147,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#tablaGamp').DataTable({
-      "order": [[ 7, 'asc']],
+      "order": [[ 0, 'asc']],
       "language": {
         "bDeferRender": true,
         "sEmtpyTable": "No ay registros",

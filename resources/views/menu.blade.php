@@ -3,16 +3,26 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-                <a @yield('menuProyecto') href="{{asset('index.php/Proyecto')}}"><i class="fa fa-desktop" accesskey="p"></i> <u>P</u>royectos</a>
+              <a @yield('menuBoleta') href="{{asset('index.php/Grafico')}}"><i class="fa fa-bar-chart-o" accesskey=""></i> Estadisticas</a>
             </li>
             <li>
-                <a @yield('menuBoleta') href="{{asset('index.php/Boleta')}}"><i class="fa fa-bar-chart-o" accesskey="b"></i> <u>B</u>oletas</a>
+                <a @yield('menuProyecto') href="{{asset('index.php/Voto')}}"><i class="fa fa-desktop" accesskey="p"></i> Votos</a>
             </li>
             <li>
-                <a @yield('menuCambio') href="{{asset('index.php/Cambio')}}"><i class="fa fa-qrcode" accesskey="c"></i> <u>C</u>ambios</a>
+                <a @yield('menuPersona') href="{{asset('index.php/Persona')}}"><i class="fa fa-bookmark" accesskey="p"></i> Personas</a>
+            </li>
+
+            <li>
+                <a @yield('menuMesa') href="{{asset('index.php/Mesa')}}"><i class="fa fa-bookmark" accesskey=""></i> Mesas</a>
             </li>
             <li>
-                <a @yield('menuReporte') href="{{asset('index.php/Reporte')}}"><i class="fa fa-file" accesskey="r"></i> <u>R</u>eportes</a>
+                <a @yield('menuRecinto') href="{{asset('index.php/Recinto')}}"><i class="fa fa-bookmark" accesskey=""></i> Recintos</a>
+            </li>
+            <li>
+                <a @yield('menuZona') href="{{asset('index.php/Zona')}}"><i class="fa fa-bookmark" accesskey=""></i> Zonas</a>
+            </li>
+            <li>
+                <a @yield('menuDistrito') href="{{asset('index.php/Distrito')}}"><i class="fa fa-bookmark" accesskey=""></i> Distritos</a>
             </li>
         </ul>
     </div>
