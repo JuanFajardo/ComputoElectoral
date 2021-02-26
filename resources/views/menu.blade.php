@@ -3,7 +3,7 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
             <li>
-              <a @yield('menuBoleta') href="{{asset('index.php/Mesa')}}"><i class="fa fa-bar-chart-o" accesskey=""></i> Estadisticas</a>
+              <a @yield('menuBoleta') href="{{asset('index.php/Grafico')}}"><i class="fa fa-bar-chart-o" accesskey=""></i> Estadisticas</a>
             </li>
             <li>
                 <a @yield('menuProyecto') href="{{asset('index.php/Voto')}}"><i class="fa fa-desktop" accesskey="p"></i> Votos</a>
