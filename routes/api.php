@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+Route::get('recintos', 'RecintoController@getRecintos')->name('recintos.listar');
+Route::get('recintos/{id}', 'RecintoController@getMesa')->name('recintos.mesas');

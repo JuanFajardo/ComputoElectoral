@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/Voto/votoVer/{id}', 'VotoController@votoVer');
+Route::resource('/Voto',    'VotoController');
+Route::resource('/Persona', 'PersonaController');
+Route::resource('/Mesa',    'MesaController');
+Route::resource('/Recinto', 'RecintoController');
+Route::resource('/Zona',    'ZonaController');
+Route::resource('/Distrito','DistritoController');
