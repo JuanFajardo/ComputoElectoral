@@ -24,3 +24,5 @@ Route::resource('/Mesa',    'MesaController');
 Route::resource('/Recinto', 'RecintoController');
 Route::resource('/Zona',    'ZonaController');
 Route::resource('/Distrito','DistritoController');
+
+Route::get('Grafico',"VotoController@Grafico");

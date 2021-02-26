@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class VotoController extends Controller
 {
 
+
   public function index(Request $request){
     $datos = Voto::Where('tipo', '=', 'ALCALDE')->where('aceptado', '=', '1')
               ->join('mesas',     'votos.id_mesa',     '=', 'mesas.id')
@@ -77,8 +78,25 @@ class VotoController extends Controller
               ->select('votos.*', 'recintos.recinto', 'personas.*', 'mesas.*', 'votos.id as votoId')
               ->get();
     return $datos;
+}
 
+public function Grafico()
+{
+  $as=Voto::sum("as");
+  $mas=Voto::sum("mas");
+  $adn=Voto::sum("adn");
+  $jap=Voto::sum("jap");
+  $mcp=Voto::sum("mcp");
+  $ucs=Voto::sum("ucs");
+  $puka=Voto::sum("puka");
+  $mds=Voto::sum("mds");
+  $mts=Voto::sum("mts");
+  $fpv=Voto::sum("fpv");
+  $mop=Voto::sum("mop");
+  $nulo=Voto::sum("nulo");
+  $blanco=Voto::sum("blanco");
 
-  }
+  return view("grafico.index",compact("as","mas","adn","jap","mcp","ucs","puka","mds","mts","fpv","mop","nulo","blanco"));
+}
 
 }
