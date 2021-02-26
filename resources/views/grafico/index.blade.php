@@ -140,5 +140,6 @@
       series.legendSettings.labelText = "[font-size: 25px]{name} - {value}[/]";
       series.legendSettings.valueText = "{valueY.close}";
 
+
     </script>
 </html>
