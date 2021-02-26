@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 class MesaController extends Controller
 {
-  public function __construct(){
-    $this->middleware('auth');
-  }
 
   public function index(Request $request){
-    $datos = Mesa::all();
+
+    $datos = Mesa::Join('recintos', 'mesas.id_distrito','recintos.id')
+                 ->join('zonas',    'mesas.id_zona',    'zonas.id')
+                 ->join('distritos', 'mesas.id_recinto', 'distritos.id')
+                 ->select('mesas.*', 'recintos.recinto','zonas.zona', 'distritos.distrito')
+                 ->get();
     if ($request->ajax()) {
       return $datos;
     }else{
