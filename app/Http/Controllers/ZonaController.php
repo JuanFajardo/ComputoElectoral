@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 class ZonaController extends Controller
 {
-  public function __construct(){
-    $this->middleware('auth');
-  }
 
   public function index(Request $request){
-    $datos = Zona::all();
+    $datos = Zona::Join('distritos', 'zonas.id_distrito', 'distritos.id')
+                   ->select('zonas.*', 'distritos.distrito')
+                   ->orderBy('zonas.zona', 'asc')
+                   ->get();
+
     if ($request->ajax()) {
       return $datos;
     }else{
