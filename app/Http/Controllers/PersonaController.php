@@ -46,9 +46,9 @@ class PersonaController extends Controller
     }
   }
   public function revisar($ci, $codigo){
-    $dato  = Persona::Where('ci','=', $ci)->where('codigo', '=', $codigo)->first();
-    if( coutn($dato)>0 ){
-      $dato = array('respuesta'=>'SI', 'codigo'=>$dato->id);
+    $dato  = Persona::Where('ci','=', $ci)->where('codigo_persona', '=', $codigo)->get();
+    if( count($dato) > 0 ){
+      $dato = array('respuesta'=>'SI', 'codigo'=>$dato[0]->id);
     }else{
       $dato = array('respuesta'=>'NO', 'codigo'=>'PUTORICHARD');
     }
