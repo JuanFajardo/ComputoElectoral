@@ -29,12 +29,13 @@ class VotoController extends Controller
     $dato = new Voto;
     $dato->fill($request->all());
     $dato->save();
+    return $dato;
 
-    if ($request->ajax()) {
+    /*if ($request->ajax()) {
         return $dato;
     }else{
       return redirect('/Voto');
-    }
+    }*/
 
   }
 

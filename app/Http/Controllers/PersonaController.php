@@ -45,5 +45,14 @@ class PersonaController extends Controller
       return redirect('/Persona');
     }
   }
+  public function revisar($ci, $codigo){
+    $dato  = Persona::Where('ci','=', $ci)->where('codigo', '=', $codigo)->first();
+    if( coutn($dato)>0 ){
+      $dato = array('respuesta'=>'SI', 'codigo'=>$dato->id);
+    }else{
+      $dato = array('respuesta'=>'NO', 'codigo'=>'PUTORICHARD');
+    }
+    return $dato;
+  }
 
 }
