@@ -287,7 +287,7 @@
 
 
           var ruta= "{{asset('/voto/')}}";
-          $('#imagen').attr('src', ruta+'/'+el.acta_votos);
+          $('#imagen').attr('src', ruta+'/'+el.acta);
 
         });
       }
