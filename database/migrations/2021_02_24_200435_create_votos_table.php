@@ -17,32 +17,6 @@ class CreateVotosTable extends Migration
             $table->id();
             $table->integer('id_mesa')->unique();
             $table->integer('id_persona')-> nullable();
-            val id_mesa:Int,
-            val id_persona:Int,
-
-            val als:Int,
-
-            val cc:Int,
-            val mas:Int,
-            val adn:Int,
-            val jap:Int,
-            val mcp:Int,
-            val ucs:Int,
-            val puka:Int,
-            val mds:Int,
-            val mts:Int,
-            val fpv:Int,
-            val mop:Int,
-            //aqui PAN-BOL
-            val nulo:Int,
-            val blanco:Int,
-            val total:(SUMA TOTAL DE TODOS LOS PARTIDOS BLANCOS Y NULOS),
-
-            val acta:(Cambbie el nombre)
-            val observacion:'nada',
-            val aceptado='1',
-            val tipo'ALCALDE/CONCEJAL'
-
             $table->integer('als')->commet('RENE JOAQUINO CABRERA')-> nullable();
             $table->integer('pan')->commet('Nose')-> nullable();
             $table->integer('cc')->commet('RAFAEL FELIPE MONTOYA RIVERA')-> nullable();
