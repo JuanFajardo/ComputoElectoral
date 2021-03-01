@@ -10,11 +10,13 @@ class MesaController extends Controller
 
   public function index(Request $request){
 
-    $datos = Mesa::Join('recintos', 'mesas.id_distrito','recintos.id')
-                 ->join('zonas',    'mesas.id_zona',    'zonas.id')
-                 ->join('distritos', 'mesas.id_recinto', 'distritos.id')
-                 ->select('mesas.*', 'recintos.recinto','zonas.zona', 'distritos.distrito')
+    $datos = Mesa::Join('recintos',   'mesas.id_recinto',  'recintos.id')
+                  ->join('zonas',     'mesas.id_zona',     'zonas.id')
+                  ->join('distritos', 'mesas.id_distrito', 'distritos.id')
+
+                 ->select('mesas.*', 'recintos.recinto', 'zonas.zona', 'distritos.distrito')
                  ->get();
+    
     if ($request->ajax()) {
       return $datos;
     }else{

@@ -83,8 +83,7 @@
                     <div class="row">
 
                       <div class="col-md-12">
-                        <img  id="imagen" width="550">
-
+                        <center><img  id="imagen" width="450"></center>
                       </div>
 
                     </div>
@@ -187,6 +186,7 @@
 <table id="tablaGamp" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
   <thead>
     <tr>
+      <th>Tipo</th>
       <th>Zona</th>
       <th>Recinto</th>
       <th>Mesa</th>
@@ -202,6 +202,7 @@
     @else
       <tr data-id="{{ $dato->id }}">
     @endif
+        <td>{{ $dato->tipo }}</td>
         <td>{{ $dato->zona }}</td>
         <td>{{ $dato->recinto }}</td>
         <td>{{ $dato->mesa }}</td>
@@ -282,6 +283,8 @@
 
           $('#mesa').val(el.recinto+" "+el.mesa);
           $('#persona').val(el.persona);
+          $('#observacion').val(el.observacion);
+
 
           var ruta= "{{asset('/voto/')}}";
           $('#imagen').attr('src', ruta+'/'+el.acta_votos);

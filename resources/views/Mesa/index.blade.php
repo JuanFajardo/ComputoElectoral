@@ -26,26 +26,33 @@
       </div>
       <div class="modal-body panel-body">
         {!! Form::open(['accept-charset'=>'UTF-8', 'enctype'=>'multipart/form-data', 'method'=>'POST', 'files'=>true, 'autocomplete'=>'off', 'id'=>'form-insert'] ) !!}
+
         <div class="row">
           <div class="col-md-4">
-            <label for="apertura_" > <b><i>Apertura</i></b> </label>
-            {!! Form::text('apertura', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'apertura_', 'required']) !!}
+            <label for="id_distrito_" > <b><i>Distrito</i></b> </label><br>
+            {!! Form::select('id_distrito', \App\Distrito::pluck('distrito', 'id'), null, ['class'=>'form-control select2', 'placeholder'=>' ', 'id'=>'id_distrito_', 'required']) !!}
           </div>
-          <div class="col-md-8">
-            <label for="actividad_" > <b><i>Actividad</i></b> </label>
-            {!! Form::text('actividad', null, ['class'=>'form-control', 'placeholder'=>'Actividad', 'id'=>'actividad_', 'required']) !!}
-          </div>
-        </div>
-        <div class="row">
           <div class="col-md-4">
-            <label for="distrito_" > <b><i>Distrito</i></b> </label>
-            {!! Form::select('distrito', ['-1'=>'Chasquivillque', '0'=>'MD', '1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8', '9'=>'9', '10'=>'10', '11'=>'11', '12'=>'12', '13'=>'13', '14'=>'14', '15'=>'15', '16'=>'16', '17'=>'17', '18'=>'18', '19'=>'19', '20'=>'20' ], null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'distrito_', 'required']) !!}
+            <label for="id_zona_" > <b><i>Zona</i></b> </label><br>
+            {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'form-control select2', 'placeholder'=>' ', 'id'=>'id_zona_', 'required']) !!}
           </div>
-          <div class="col-md-8">
-            <label for="presupuesto_" > <b><i>Presupuesto</i></b> </label>
-            {!! Form::text('presupuesto', null, ['class'=>'form-control', 'placeholder'=>'Presupuesto', 'id'=>'presupuesto_', 'required']) !!}
+          <div class="col-md-4">
+            <label for="id_recinto_" > <b><i>Actividad</i></b> </label><br>
+            {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'form-control select2', 'placeholder'=>' ', 'id'=>'id_recinto_', 'required']) !!}
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="mesa_" > <b><i>Mesa</i></b> </label>
+            {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'Mesa', 'id'=>'mesa_', 'required']) !!}
+          </div>
+          <div class="col-md-6">
+            <label for="habilitados_" > <b><i>Habilitados</i></b> </label>
+            {!! Form::text('habilitados', null, ['class'=>'form-control', 'placeholder'=>'Habilitados', 'id'=>'habilitados_', 'required']) !!}
+          </div>
+        </div>
+
         <hr>
         {!! Form::hidden('id_user', '1') !!}
         {!! Form::submit('A&ntilde;adir', ['class'=>'agregar btn btn-primary']) !!}
@@ -68,29 +75,27 @@
                     {!! Form::open(['route'=>['Mesa.update', ':DATO_ID'], 'method'=>'PATCH', 'id'=>'form-update' ])!!}
                     <div class="row">
                       <div class="col-md-4">
-                        <label for="apertura" > <b><i>Apertura</i></b> </label>
-                        {!! Form::text('apertura', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'apertura', 'required']) !!}
+                        <label for="id_distrito_" > <b><i>Distrito</i></b> </label><br>
+                        {!! Form::select('id_distrito', \App\Distrito::pluck('distrito', 'id'), null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'id_distrito', 'required']) !!}
                       </div>
-                      <div class="col-md-8">
-                        <label for="actividad" > <b><i>Actividad</i></b> </label>
-                        {!! Form::text('actividad', null, ['class'=>'form-control', 'placeholder'=>'Actividad', 'id'=>'actividad', 'required']) !!}
+                      <div class="col-md-4">
+                        <label for="id_zona_" > <b><i>Zona</i></b> </label><br>
+                        {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'id_zona', 'required']) !!}
+                      </div>
+                      <div class="col-md-4">
+                        <label for="id_recinto_" > <b><i>Recinto</i></b> </label><br>
+                        {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'id_recinto', 'required']) !!}
                       </div>
                     </div>
+
                     <div class="row">
                       <div class="col-md-4">
-                        <label for="distrito" > <b><i>Distrito</i></b> </label>
-                        {!! Form::select('distrito', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8', '9'=>'9', '10'=>'10', '11'=>'11', '12'=>'12', '13'=>'13', '14'=>'14', '15'=>'15', '16'=>'16', '17'=>'17', '18'=>'18', '19'=>'19', '20'=>'20' ], null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'distrito', 'required']) !!}
+                        <label for="mesa_" > <b><i>Mesa</i></b> </label>
+                        {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'Mesa', 'id'=>'mesa', 'required']) !!}
                       </div>
                       <div class="col-md-8">
-                        <label for="presupuesto" > <b><i>Presupuesto</i></b> </label>
-                        {!! Form::text('presupuesto', null, ['class'=>'form-control', 'placeholder'=>'Presupuesto', 'id'=>'presupuesto', 'required']) !!}
-                      </div>
-                    </div>
-                    <br><br>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <label for="Observacion" > <b><i>Observacion</i></b> </label>
-                        {!! Form::text('observacion', null, ['class'=>'form-control', 'placeholder'=>'Observacion', 'id'=>'observacion', 'required']) !!}
+                        <label for="habilitados_" > <b><i>Habilitado</i></b> </label>
+                        {!! Form::text('habilitados', null, ['class'=>'form-control', 'placeholder'=>'Habilitados', 'id'=>'habilitados', 'required']) !!}
                       </div>
                     </div>
 
@@ -147,6 +152,7 @@
 
 @section('js')
 <script type="text/javascript">
+
   $(document).ready(function(){
     $('#tablaGamp').DataTable({
       "order": [[ 0, 'asc']],
@@ -178,14 +184,17 @@
     var form = $('#form-update')
     var url = form.attr('action').replace(':DATO_ID', id);
     form.get(0).setAttribute('action', url);
-    link  = '{{ asset("/index.php/Proyecto/")}}/'+id;
+    link  = '{{ asset("/index.php/Mesa/")}}/'+id;
+
     $.getJSON(link, function(data, textStatus) {
       if(data.length > 0){
         $.each(data, function(index, el) {
-          $('#apertura').val(el.apertura);
-          $('#actividad').val(el.actividad);
-          $('#distrito').val(el.distrito);
-          $('#presupuesto').val(el.presupuesto);
+          $("#id_distrito option[value="+el.id_distrito+"]").attr('selected', 'selected');
+          $("#id_zona option[value="+el.id_zona+"]").attr('selected', 'selected');
+          $("#id_recinto option[value="+el.id_recinto+"]").attr('selected', 'selected');
+
+          $('#mesa').val(el.mesa);
+          $('#habilitados').val(el.habilitados);
         });
       }
     });

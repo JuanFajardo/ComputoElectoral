@@ -11,6 +11,7 @@
     <link href="{{asset('assets/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/js/Lightweight-Chart/cssCharts.css')}}">
 
+    </style>
 </head>
 
 <body>

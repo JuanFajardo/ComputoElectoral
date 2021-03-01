@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('recintos', 'RecintoController@getRecintos')->name('recintos.listar');
 Route::get('recintos/{id}', 'RecintoController@getMesa')->name('recintos.mesas');
+
+Route::post('votos', 'VotoController@store')->name('votos.guardar');

@@ -14,6 +14,7 @@ class VotoController extends Controller
               ->join('mesas',     'votos.id_mesa',     '=', 'mesas.id')
               ->join('recintos',  'mesas.id_recinto', '=', 'recintos.id')
               ->join('zonas',     'mesas.id_zona',    '=', 'zonas.id')
+              ->select('votos.*', 'mesas.mesa', 'mesas.habilitados', 'zonas.zona', 'recintos.recinto')
               ->orderBy('votos.id', 'asc')
               ->get();
 
@@ -28,7 +29,13 @@ class VotoController extends Controller
     $dato = new Voto;
     $dato->fill($request->all());
     $dato->save();
-    return redirect('/Voto');
+
+    if ($request->ajax()) {
+        return $dato;
+    }else{
+      return redirect('/Voto');
+    }
+
   }
 
   public function show($id){
@@ -40,21 +47,21 @@ class VotoController extends Controller
     //return $request->all();
     $dato = Voto::find($request->id);
 
-    $dato->as     = $request->as;
-    $dato->cc     = $request->cc;
-    $dato->mas       = $request->mas;
-    $dato->adn       = $request->adn;
-    $dato->jap       = $request->jap;
-    $dato->mcp       = $request->mcp;
-    $dato->ucs       = $request->ucs;
-    $dato->puka       = $request->puka;
-    $dato->mds       = $request->mds;
-    $dato->mts       = $request->mts;
-    $dato->fpv       = $request->fpv;
-    $dato->mop       = $request->mop;
-    $dato->nulo       = $request->nulo;
-    $dato->blanco       = $request->blanco;
-    $dato->total       = $request->total;
+    $dato->as       = $request->as;
+    $dato->cc       = $request->cc;
+    $dato->mas      = $request->mas;
+    $dato->adn      = $request->adn;
+    $dato->jap      = $request->jap;
+    $dato->mcp      = $request->mcp;
+    $dato->ucs      = $request->ucs;
+    $dato->puka     = $request->puka;
+    $dato->mds      = $request->mds;
+    $dato->mts      = $request->mts;
+    $dato->fpv      = $request->fpv;
+    $dato->mop      = $request->mop;
+    $dato->nulo     = $request->nulo;
+    $dato->blanco   = $request->blanco;
+    $dato->total    = $request->total;
     $dato->observacion       = $request->observacion;
     $dato->save();
     return redirect('/Voto');
