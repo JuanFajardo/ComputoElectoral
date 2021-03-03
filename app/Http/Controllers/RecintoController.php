@@ -58,7 +58,7 @@ class RecintoController extends Controller
   }
 
   public function getMesa($id){
-    $datos = Mesa::Where('id_recinto', $id)->select('id', 'mesa', 'habilitados')->orderBy('id', 'asc')->get();
+    $datos = Mesa::Where('id_recinto', $id)->where('contador', '<', 2)->select('id', 'mesa', 'habilitados')->orderBy('id', 'asc')->get();
     return $datos;
   }
 
