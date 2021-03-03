@@ -24,6 +24,7 @@ class CreateMesasTable extends Migration
             $table->integer('id_zona')-> nullable();
             $table->integer('id_recinto')-> nullable();
             $table->integer('habilitados')-> nullable();
+            $table->integer('contador')->comment('2 y no debe mostrarse')-> nullable();
             $table->timestamps();
         });
     }

@@ -51,62 +51,62 @@
 
                     <div class="row">
                       <div class="col-md-2">
-                        <label for="als" > <b><i>AS</i></b> </label>
-                        {!! Form::text('als', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'als', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="cc" > <b><i>cc</i></b> </label>
-                        {!! Form::text('cc', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'cc', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="mas" > <b><i>mas</i></b> </label>
-                        {!! Form::text('mas', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mas', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="adn" > <b><i>adn</i></b> </label>
-                        {!! Form::text('adn', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'adn', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="jap" > <b><i>jap</i></b> </label>
-                        {!! Form::text('jap', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'jap', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="mcp" > <b><i>mcp</i></b> </label>
-                        {!! Form::text('mcp', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mcp', 'required']) !!}
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-2">
-                        <label for="ucs" > <b><i>ucs</i></b> </label>
-                        {!! Form::text('ucs', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'ucs', 'required']) !!}
+                        <label for="mop" > <b><i>mop</i></b> </label>
+                        {!! Form::text('mop', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mop', 'required']) !!}
                       </div>
                       <div class="col-md-2">
                         <label for="puka" > <b><i>puka</i></b> </label>
                         {!! Form::text('puka', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'puka', 'required']) !!}
                       </div>
                       <div class="col-md-2">
-                        <label for="mds" > <b><i>mds</i></b> </label>
-                        {!! Form::text('mds', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mds', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="mts" > <b><i>adn</i></b> </label>
-                        {!! Form::text('mts', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mts', 'required']) !!}
-                      </div>
-                      <div class="col-md-2">
-                        <label for="fpv" > <b><i>jap</i></b> </label>
+                        <label for="fpv" > <b><i>FPV</i></b> </label>
                         {!! Form::text('fpv', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'fpv', 'required']) !!}
                       </div>
                       <div class="col-md-2">
-                        <label for="mop" > <b><i>mop</i></b> </label>
-                        {!! Form::text('mop', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mop', 'required']) !!}
+                        <label for="jap" > <b><i>jap</i></b> </label>
+                        {!! Form::text('jap', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'jap', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="pan" > <b><i>pan</i></b> </label>
+                        {!! Form::text('pan', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'pan', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="ucs" > <b><i>ucs</i></b> </label>
+                        {!! Form::text('ucs', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'ucs', 'required']) !!}
                       </div>
                     </div>
 
                     <div class="row">
                       <div class="col-md-2">
-                        <label for="pan" > <b><i>pan</i></b> </label>
-                        {!! Form::text('pan', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'pan', 'required']) !!}
+                        <label for="mas" > <b><i>mas</i></b> </label>
+                        {!! Form::text('mas', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mas', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="mcp" > <b><i>mcp</i></b> </label>
+                        {!! Form::text('mcp', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mcp', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="mds" > <b><i>Demo</i></b> </label>
+                        {!! Form::text('mds', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mds', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="mts" > <b><i>MTS</i></b> </label>
+                        {!! Form::text('mts', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'mts', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="cc" > <b><i>cc</i></b> </label>
+                        {!! Form::text('cc', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'cc', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="als" > <b><i>AS</i></b> </label>
+                        {!! Form::text('als', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'als', 'required']) !!}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label for="adn" > <b><i>adn</i></b> </label>
+                        {!! Form::text('adn', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'adn', 'required']) !!}
                       </div>
                       <div class="col-md-3">
                         <label for="nulo" > <b><i>nulo</i></b> </label>

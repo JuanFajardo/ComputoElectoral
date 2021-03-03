@@ -10,7 +10,7 @@ class VotoController extends Controller
 
 
   public function index(Request $request){
-    $datos = Voto::Where('tipo', '=', 'ALCALDE')->where('aceptado', '=', '1')
+    $datos = Voto::Where('aceptado', '=', '1')
               ->join('mesas',     'votos.id_mesa',     '=', 'mesas.id')
               ->join('recintos',  'mesas.id_recinto', '=', 'recintos.id')
               ->join('zonas',     'mesas.id_zona',    '=', 'zonas.id')
@@ -29,6 +29,11 @@ class VotoController extends Controller
     $dato = new Voto;
     $dato->fill($request->all());
     $dato->save();
+
+    $mesa = \App\Mesa::find($dato->id_mesa);
+    $mesa->contador = $mesa->contador  + 1;
+    $mesa->save();
+
     return $dato;
 
     /*if ($request->ajax()) {
@@ -48,8 +53,8 @@ class VotoController extends Controller
     //return $request->all();
     $dato = Voto::find($request->id);
 
-    $dato->als       = $request->als;
-    $dato->pan       = $request->pan;
+    $dato->als      = $request->als;
+    $dato->pan      = $request->pan;
     $dato->cc       = $request->cc;
     $dato->mas      = $request->mas;
     $dato->adn      = $request->adn;
@@ -64,7 +69,8 @@ class VotoController extends Controller
     $dato->nulo     = $request->nulo;
     $dato->blanco   = $request->blanco;
     $dato->total    = $request->total;
-    $dato->observacion       = $request->observacion;
+
+    $dato->observacion = $request->observacion;
     $dato->save();
     return redirect('/Voto');
   }
