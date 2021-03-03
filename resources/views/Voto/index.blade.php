@@ -214,7 +214,7 @@
   });
 
   $('.voto').focus(function(){
-    var total = parseInt($('#as').val()) + parseInt($('#cc').val()) + parseInt($('#mas').val()) + parseInt($('#adn').val()) + parseInt($('#jap').val()) + parseInt($('#mcp').val()) + parseInt($('#ucs').val()) + parseInt($('#puka').val()) +  parseInt($('#mds').val()) +  parseInt($('#mts').val()) +  parseInt($('#fpv').val()) + parseInt($('#mop').val()) +  parseInt($('#nulo').val()) +  parseInt($('#blanco').val());
+    var total = parseInt($('#pan').val()) + parseInt($('#als').val()) + parseInt($('#cc').val()) + parseInt($('#mas').val()) + parseInt($('#adn').val()) + parseInt($('#jap').val()) + parseInt($('#mcp').val()) + parseInt($('#ucs').val()) + parseInt($('#puka').val()) +  parseInt($('#mds').val()) +  parseInt($('#mts').val()) +  parseInt($('#fpv').val()) + parseInt($('#mop').val()) +  parseInt($('#nulo').val()) +  parseInt($('#blanco').val());
     $('#total').val(total);
   })
   $('.actualizar').click(function(event){
@@ -233,8 +233,9 @@
 
           $('#id_mesa').val(el.id_mesa);
           $('#id_persona').val(el.id_persona);
-          $('#as').val(el.as);
+          $('#als').val(el.als);
           $('#cc').val(el.cc);
+          $('#pan').val(el.pan);
           $('#mas').val(el.mas);
           $('#adn').val(el.adn);
           $('#jap').val(el.jap);
