@@ -48,7 +48,8 @@ class VotoController extends Controller
     //return $request->all();
     $dato = Voto::find($request->id);
 
-    $dato->as       = $request->as;
+    $dato->als       = $request->als;
+    $dato->pan       = $request->pan;
     $dato->cc       = $request->cc;
     $dato->mas      = $request->mas;
     $dato->adn      = $request->adn;
