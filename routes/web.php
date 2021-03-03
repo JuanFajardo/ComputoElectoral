@@ -26,3 +26,6 @@ Route::resource('/Zona',    'ZonaController');
 Route::resource('/Distrito','DistritoController');
 
 Route::get('Grafico',"VotoController@Grafico");
+Route::get('BuscarZona/{id}',"VotoController@BuscarZona");
+Route::get('BuscarRecinto/{id}',"VotoController@BuscarRecinto");
+Route::post('VerGrafico',"VotoController@VerGrafico");
