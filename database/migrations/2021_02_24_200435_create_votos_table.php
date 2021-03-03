@@ -15,8 +15,8 @@ class CreateVotosTable extends Migration
     {
         Schema::create('votos', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_mesa')->unique();
-            $table->integer('id_persona')-> nullable();
+            $table->integer('id_mesa')->nullable();
+            $table->integer('id_persona')->nullable();
             $table->integer('als')->commet('RENE JOAQUINO CABRERA')-> nullable();
             $table->integer('pan')->commet('Nose')-> nullable();
             $table->integer('cc')->commet('RAFAEL FELIPE MONTOYA RIVERA')-> nullable();
