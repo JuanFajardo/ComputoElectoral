@@ -15,46 +15,6 @@
  class="active-menu"
 @endsection
 
-@section('modal1')
-<div id="modalAgregar" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content panel panel-primary">
-      <div class="modal-header panel-heading">
-        <b>Nuevo</b>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body panel-body">
-        {!! Form::open(['accept-charset'=>'UTF-8', 'enctype'=>'multipart/form-data', 'method'=>'POST', 'files'=>true, 'autocomplete'=>'off', 'id'=>'form-insert'] ) !!}
-        <div class="row">
-          <div class="col-md-4">
-            <label for="apertura_" > <b><i>Apertura</i></b> </label>
-            {!! Form::text('apertura', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'apertura_', 'required']) !!}
-          </div>
-          <div class="col-md-8">
-            <label for="actividad_" > <b><i>Actividad</i></b> </label>
-            {!! Form::text('actividad', null, ['class'=>'form-control', 'placeholder'=>'Actividad', 'id'=>'actividad_', 'required']) !!}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <label for="distrito_" > <b><i>Distrito</i></b> </label>
-            {!! Form::select('distrito', ['-1'=>'Chasquivillque', '0'=>'MD', '1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8', '9'=>'9', '10'=>'10', '11'=>'11', '12'=>'12', '13'=>'13', '14'=>'14', '15'=>'15', '16'=>'16', '17'=>'17', '18'=>'18', '19'=>'19', '20'=>'20' ], null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'distrito_', 'required']) !!}
-          </div>
-          <div class="col-md-8">
-            <label for="presupuesto_" > <b><i>Presupuesto</i></b> </label>
-            {!! Form::text('presupuesto', null, ['class'=>'form-control', 'placeholder'=>'Presupuesto', 'id'=>'presupuesto_', 'required']) !!}
-          </div>
-        </div>
-        <hr>
-        {!! Form::hidden('id_user', '1') !!}
-        {!! Form::submit('A&ntilde;adir', ['class'=>'agregar btn btn-primary']) !!}
-        {!! Form::close() !!}
-      </div>
-    </div>
-  </div>
-</div>
-@endsection
-
 @section('modal2')
     <div id="modalModifiar" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -91,8 +51,8 @@
 
                     <div class="row">
                       <div class="col-md-2">
-                        <label for="as" > <b><i>AS</i></b> </label>
-                        {!! Form::text('as', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'as', 'required']) !!}
+                        <label for="als" > <b><i>AS</i></b> </label>
+                        {!! Form::text('als', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'als', 'required']) !!}
                       </div>
                       <div class="col-md-2">
                         <label for="cc" > <b><i>cc</i></b> </label>
@@ -144,11 +104,15 @@
                     </div>
 
                     <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-md-2">
+                        <label for="pan" > <b><i>pan</i></b> </label>
+                        {!! Form::text('pan', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'pan', 'required']) !!}
+                      </div>
+                      <div class="col-md-3">
                         <label for="nulo" > <b><i>nulo</i></b> </label>
                         {!! Form::text('nulo', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'nulo', 'required']) !!}
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label for="blanco" > <b><i>blanco</i></b> </label>
                         {!! Form::text('blanco', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'blanco', 'required']) !!}
                       </div>
@@ -199,6 +163,10 @@
     @foreach($datos as $dato)
     @if( $dato->total > $dato->habilitados )
       <tr data-id="{{ $dato->id }}" style="background-color:#F87979;">
+    @elseif( $dato->total == "0" )
+      <tr data-id="{{ $dato->id }}" style="background-color:#ffcc5e;">
+    @elseif($dato->observacion == "nada" )
+      <tr data-id="{{ $dato->id }}" style="background-color:#4d8933;">
     @else
       <tr data-id="{{ $dato->id }}">
     @endif
