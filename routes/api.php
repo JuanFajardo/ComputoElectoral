@@ -25,4 +25,5 @@ Route::get('recintos/{id}', 'RecintoController@getMesa')->name('recintos.mesas')
 
 Route::get('persona/{ci}/{codigo}', 'PersonaController@revisar')->name('persona.revisar');
 
+Route::post('log', 'LogController@store')->name('log.guardar');
 Route::post('votos', 'VotoController@store')->name('votos.guardar');
