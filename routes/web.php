@@ -24,8 +24,10 @@ Route::resource('/Mesa',    'MesaController');
 Route::resource('/Recinto', 'RecintoController');
 Route::resource('/Zona',    'ZonaController');
 Route::resource('/Distrito','DistritoController');
+Route::resource('/Log','LogController');
 
 Route::get('Grafico',"VotoController@Grafico");
 Route::get('BuscarZona/{id}',"VotoController@BuscarZona");
 Route::get('BuscarRecinto/{id}',"VotoController@BuscarRecinto");
 Route::post('VerGrafico',"VotoController@VerGrafico");
+Route::get('ContarVotos',"VotoController@ContarVotos");

@@ -1,145 +1,225 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>amCharts V4 Example - simple-pie-chart</title>
-    <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background-color: #ffffff;
-      overflow: hidden;
-      margin: 0;
-      background: url({{asset('grafico/fondo2.jpg')}}) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-      color:red !important;
-    }
-
-    #chartdiv {
-      width: 100%;
-
-      height: 70vh;
-    }
-    .primario{background-color:rgba(255,255,255,0.5);}
-    </style>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></head>
-  <body>
-<div class="container-fluid " style="height: 100vh;">
-    <div class="container-fluid themed-container rounded primario" style="border:solid 1px #117204; margin:3px; height: 98vh;" >
-
-    <div class="container-fluid themed-container">
-      <div class="row">
-        <div class="col" style="margin-bottom:-15px; margin-top:3px;">
-          <center><div class="alert alert-success"><span style="font-size:3em"><B>RESULTADOS ALCALDIA</B></span></div></center>
-        </div>
-      </div>
-    </div>
+@extends('gamp')
 
 
-    <div class="container-fluid themed-container">
+@section('title') Proyectos @endsection
 
-      <div class="row">
-        <div class="col-md-12 themed-grid-col">
-        <div id="chartdiv"></div>
-        </div>
-        <!--<div class="col-4 col-md-2 themed-grid-col" style="border:solid 1px black;">
-        2 of 2
-        </div>
-        <-->
-      </div>
+@section('ventana') Proyectos
+@endsection
+@section('descripcion') Administracion de los proyectos @endsection
+@section('titulo')
+  <a href="{{asset('index.php')}}" style="color:#000;" accesskey="i"></i> <u>I</u>nicio </a>
+
+   @endsection
+
+@section('menuMesa')
+ class="active-menu"
+@endsection
+
+@section('modal1')
+
+@endsection
+
+@section('modal2')
+
+@endsection
 
 
-    </div>
+@section('cuerpo')
+@if( \Session::get('clave') == "OK" )
+  <script type="text/javascript">
+    alert("La contraseña se actualizo correctamente");
+  </script>
+@endif
 
+<div style="margin:0 auto;">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('/VerGrafico') }}" autocomplete="off">
 
-
-
+  <table class="table" id="mitabla" style="width:50%;">
+    {{ csrf_field() }}
+    <tr>
+      <td>Opcion</td>
+      <td>
+        <select name="id_departamento" class="form-control">
+        <option>ALCALDE</option>
+        <option>CONCEJAL</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Departamento</td>
+      <td>
+        <select name="id_departamento" class="form-control">
+        <option id="1">Potosi</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Provincia</td>
+      <td>
+        <select name="id_provincia" class="form-control">
+        <option id="1">Tomas Frias</option>
+        </select>
+      </td>
+      <tr>
+        <td>Municipio</td>
+        <td>
+          <select name="id_departamento" class="form-control">
+          <option id="1">Potosi</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Distrito</td>
+        <td>
+          <select name="id_distrito" id="distrito" class="form-control">
+          <option id="0">Seleccione Distrito</option>
+          @foreach($distrito as $distrito)
+          <option value="{{$distrito->id}}">{{$distrito->distrito}}</option>
+          @endforeach
+          </select>
+        </td>
+      </tr>
+  </table>
+  <table>
+  </tr>
+      <tr>
+        <td></td>
+        <td><input type="submit" value="Generar Grafico" class="alert alert-success"></td>
+      </tr>
+  </table>
+</form>
 </div>
 
+@endsection
 
-</div>
-  <!--  -->
-  </body>
-  <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-	<script src="{{asset('grafico/core.js')}}"></script>
-    <script src="{{asset('grafico/charts.js')}}"></script>
-	<script src="{{asset('grafico/animated.js')}}"></script>
-    <script>
+@section('js')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#tablaGamp').DataTable({
+      "order": [[ 0, 'asc']],
+      "language": {
+        "bDeferRender": true,
+        "sEmtpyTable": "No ay registros",
+        "decimal": ",",
+        "thousands": ".",
+        "lengthMenu": "Mostrar _MENU_ datos por registros",
+        "zeroRecords": "No se encontro nada,  lo siento",
+        "info": "Mostrar paginas [_PAGE_] de [_PAGES_]",
+        "infoEmpty": "No ay entradas permitidas",
+        "search": "Buscar ",
+        "infoFiltered": "(Busqueda de _MAX_ registros en total)",
+        "oPaginate":{
+          "sLast":"Final",
+          "sFirst":"Principio",
+          "sNext":"Siguiente",
+          "sPrevious":"Anterior"
+        }
+      }
+    });
+  });
 
-    am4core.useTheme(am4themes_animated);
+  $('#distrito').change(function(event)
+  {
+    //event.preventDefault();
+    id=this.value;
+    link  = '{{ asset("/index.php/BuscarZona/")}}/'+id;
+    texto='';
 
-    var chart = am4core.create("chartdiv", am4charts.PieChart3D);//am4charts.PieChart3D
+    $.getJSON(link, function(data, textStatus)
+    {
+      $('#zona_7').remove();
+      texto+='<tr id="zona_7"><td>Zona</td>';
+        if(data.length > 0)
+        {
+          texto+='<td><select name="id_recinto" id="reciento" class="form-control" onchange="Recinto(this.value)"><option value="0">Seleccione Zona</option>';
+          $.each(data, function(index, el)
+          {
+            texto+='<option value="'+el.id+'">'+el.zona+'</option>';
+          });
+          texto+='</select></td>';
+        }
+        else
+        {
+          texto+='<td>No existen resultados</td>'
+        }
 
-      chart.data = [{
-        "partido": "AS",
-        "votos": {{$as}}
-      }, {
-        "partido": "MAS",
-        "votos":  {{$mas}}
-      }, {
-        "partido": "ADN",
-        "votos": {{$adn}}
-      }, {
-        "partido": "JAP",
-        "votos": {{$jap}}
-      }, {
-        "partido": "MCP",
-        "votos": {{$mcp}}
-      }, {
-        "partido": "USC",
-        "votos": {{$ucs}}
-      }, {
-        "partido": "PUKA",
-        "votos":  {{$puka}}
-      }, {
-        "partido": "MDS",
-        "votos": {{$mds}}
-      }, {
-        "partido": "FPV",
-        "votos": {{$fpv}}
-      }];
-      var series = chart.series.push(new am4charts.PieSeries3D());
+      texto+='</tr>';
+      $( "#mitabla" ).append(texto);
+    });
 
-      series.dataFields.value = "votos";
-      series.dataFields.category = "partido";
-      series.colors = new am4core.ColorSet();
-      series.colors.list = [am4core.color("#02b658"),
-                            am4core.color("#2788f4"),
-                            am4core.color("#929292"),
-                            am4core.color("#fffdbd"),
-                            am4core.color("#ff9898"),
-                            am4core.color("#b8d5fc"),
-                            am4core.color("#c53025"),
-                            am4core.color("#c7ffcf"),
-                            am4core.color("#ffbafd"),
-                            am4core.color("#f00")];
+  });
 
+  function Recinto(zona)
+  {
 
+    //event.preventDefault();
+    id=this.value;
+    link  = '{{ asset("/index.php/BuscarRecinto/")}}/'+zona;
+    texto='';
 
-      // this creates initial animation
-      series.hiddenState.properties.opacity = 1;
-      series.hiddenState.properties.endAngle = -90;
-      series.hiddenState.properties.startAngle = -90;
-      series.labels.template.fill = am4core.color("black");
+    $.getJSON(link, function(data, textStatus)
+    {
+      $('#reciento_7').remove();
+      texto+='<tr id="reciento_7"><td>Recinto</td>';
+        if(data.length > 0)
+        {
+          texto+='<td><select name="id_recinto" class="form-control"><option value="0">Seleccione Recinto</option>';
+          $.each(data, function(index, el)
+          {
+            texto+='<option value="'+el.id+'">'+el.recinto+'</option>';
+          });
+          texto+='</select></td>';
+        }
+        else
+        {
+          texto+='<td>No existen resultados</td>'
+        }
 
-      series.slices.template.stroke = am4core.color("#fff");
-      series.labels.template.fontSize = 25;
-      series.labels.template.wrap = true;
+      texto+='</tr>';
+      $( "#mitabla" ).append(texto);
+    });
 
-
-
-      chart.legend = new am4charts.Legend();
-      chart.legend.position = "right";
-      series.legendSettings.labelText = "[font-size: 25px]{name} - {value}[/]";
-      series.legendSettings.valueText = "{valueY.close}";
+  }
 
 
-    </script>
-</html>
+  $('.actualizar').click(function(event){
+    event.preventDefault();
+    var fila = $(this).parents('tr');
+    var id = fila.data('id');
+    var form = $('#form-update')
+    var url = form.attr('action').replace(':DATO_ID', id);
+    form.get(0).setAttribute('action', url);
+    link  = '{{ asset("/index.php/Proyecto/")}}/'+id;
+    $.getJSON(link, function(data, textStatus) {
+      if(data.length > 0){
+        $.each(data, function(index, el) {
+          $('#apertura').val(el.apertura);
+          $('#actividad').val(el.actividad);
+          $('#distrito').val(el.distrito);
+          $('#presupuesto').val(el.presupuesto);
+        });
+      }
+    });
+  });
+
+
+
+  $('.eliminar').click(function(event) {
+    event.preventDefault();
+    var fila = $(this).parents('tr');
+    var id = fila.data('id');
+    var form = $('#form-delete');
+    var url = form.attr('action').replace(':DATO_ID',id);
+    var data = form.serialize();
+    if(confirm('Esta seguro de eliminar el Proyecto')){
+      $.post(url, data, function(result, textStatus, xhr) {
+        alert(result);
+        fila.fadeOut();
+      }).fail(function(esp){
+        fila.show();
+      });
+    }
+  });
+</script>
+@endsection
+
