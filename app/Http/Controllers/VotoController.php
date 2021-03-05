@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Voto;
+use App\Distrito;
 use Illuminate\Http\Request;
 
 class VotoController extends Controller
@@ -97,21 +98,80 @@ class VotoController extends Controller
 
 public function Grafico()
 {
-  $as=Voto::sum("as");
-  $mas=Voto::sum("mas");
-  $adn=Voto::sum("adn");
-  $jap=Voto::sum("jap");
-  $mcp=Voto::sum("mcp");
-  $ucs=Voto::sum("ucs");
-  $puka=Voto::sum("puka");
-  $mds=Voto::sum("mds");
-  $mts=Voto::sum("mts");
-  $fpv=Voto::sum("fpv");
-  $mop=Voto::sum("mop");
-  $nulo=Voto::sum("nulo");
-  $blanco=Voto::sum("blanco");
+  $distrito=Distrito::orderBy("id")->get();
 
-  return view("grafico.index",compact("as","mas","adn","jap","mcp","ucs","puka","mds","mts","fpv","mop","nulo","blanco"));
+  return view("grafico.index",compact("distrito"));
 }
 
+public function BuscarZona($id)
+{
+  $datos=\DB::table("zonas")->where("id_distrito",$id)->orderBy("id")->get();
+  return $datos;
 }
+
+public function BuscarRecinto($id)
+{
+  $datos=\DB::table("recintos")->where("id_zona",$id)->orderBy("id")->get();
+  return $datos;
+}
+
+public function VerGrafico(Request $request)
+{
+  $mop=Voto::sum("mop");//1
+  $puka=Voto::sum("puka");//2
+  $fpv=Voto::sum("fpv");//3
+  $jap=Voto::sum("jap");//4
+  //$panbol=Voto::sum("panbol");//5
+  $ucs=Voto::sum("ucs");//6
+  $mas=Voto::sum("mas");//7
+  $mcp=Voto::sum("mcp");//8
+  $mds=Voto::sum("mds");//9
+  $mts=Voto::sum("mts");//10
+  $cc=Voto::sum("cc");//11
+  $as=Voto::sum("als");//12
+  $adn=Voto::sum("adn");//13
+  $nulo=Voto::sum("nulo");//14
+  $blanco=Voto::sum("blanco");//15
+  return view("grafico.grafico",compact("mop","puka","fpv","jap","ucs","mas","mcp","mds","mts","cc","as","adn","nulo","blanco"));
+}
+
+public function ContarVotos()
+{
+  $mop=Voto::sum("mop");//1
+  $puka=Voto::sum("puka");//2
+  $fpv=Voto::sum("fpv");//3
+  $jap=Voto::sum("jap");//4
+  //$panbol=Voto::sum("panbol");//5
+  $ucs=Voto::sum("ucs");//6
+  $mas=Voto::sum("mas");//7
+  $mcp=Voto::sum("mcp");//8
+  $mds=Voto::sum("mds");//9
+  $mts=Voto::sum("mts");//10
+  $cc=Voto::sum("cc");//11
+  $as=Voto::sum("als");//12
+  $adn=Voto::sum("adn");//13
+  $nulo=Voto::sum("nulo");//14
+  $blanco=Voto::sum("blanco");//15
+  $datos=array(
+              "mop"=>$mop,
+              "puka"=>$puka,
+              "fpv"=>$fpv,
+              "jap"=>$jap,
+              //"panbol"=>$panbol,
+              "ucs"=>$ucs,
+              "mas"=>$mas,
+              "mcp"=>$mcp,
+              "mds"=>$mds,
+              "mts"=>$mts,
+              "cc"=>$cc,
+              "as"=>$as,
+              "adn"=>$adn,
+              "nulo"=>$nulo,
+              "blanco"=>$blanco,
+              );
+    return $datos;
+}
+
+
+}
+

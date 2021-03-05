@@ -29,3 +29,4 @@ Route::get('Grafico',"VotoController@Grafico");
 Route::get('BuscarZona/{id}',"VotoController@BuscarZona");
 Route::get('BuscarRecinto/{id}',"VotoController@BuscarRecinto");
 Route::post('VerGrafico',"VotoController@VerGrafico");
+Route::get('ContarVotos',"VotoController@ContarVotos");
