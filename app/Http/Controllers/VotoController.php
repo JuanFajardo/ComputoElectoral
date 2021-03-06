@@ -28,17 +28,6 @@ class VotoController extends Controller
 
   public function store(Request $request){
 
-    $mesa = Voto::Where('id_mesa', '=', $request->id_mesa)->first();
-
-    if( count($mesa) > 0 && $mesa->tipo == $request->tipo ){
-      return array("respuesta"=>"NO", "mensajes"=>"Ya inserto para ".$request->tipo);
-    }
-    /*
-    if( count($mesa) > 0 && $mesa->tipo == $request->tipo ){
-      return array("respuesta"=>"NO", "mensajes"=>"Ya inserto para concejal");
-    }*/
-
-
     $dato = new Voto;
     $dato->fill($request->all());
     $dato->save();

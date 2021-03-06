@@ -32,7 +32,7 @@
           <div class="col-md-4">
             <label for="id_mesa_" > <b><i>Mesa</i></b> </label>
 
-            <select class="form-control" name="id_mesa" id="id_mesa_" "required" placeholder="Elige">
+            <select name="id_mesa" id="id_mesa_" "required" placeholder="Elige" class="selectpicker" data-live-search="true">
                 @foreach($recintos as  $recinto)
                   <option value="{{$recinto->id}}"> <small>{{$recinto->recinto}} <b>{{$recinto->mesa}}</b> </small> </option>
                 @endforeach
@@ -83,7 +83,7 @@
                     <div class="row">
                       <div class="col-md-4">
                         <label for="id_mesa" > <b><i>Mesa</i></b> </label>
-                        <select class="form-control" name="id_mesa" id="id_mesa" "required" placeholder="Elige">
+                        <select  name="id_mesa" id="id_mesa" "required" class="selectpicker" data-live-search="true">
                             @foreach($recintos as  $recinto)
                               <option value="{{$recinto->id}}"> <small>{{$recinto->recinto}} <b>{{$recinto->mesa}}</b> </small> </option>
                             @endforeach
@@ -170,7 +170,10 @@
 @section('js')
 <script type="text/javascript">
 
+  $('.my-select').selectpicker();
+
   $(document).ready(function(){
+
     $('#tablaGamp').DataTable({
       "order": [[ 1, 'asc']],
       "language": {

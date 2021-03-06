@@ -10,7 +10,7 @@
     <link href="{{asset('assets/css/custom-styles.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('assets/js/Lightweight-Chart/cssCharts.css')}}">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     </style>
 </head>
 
@@ -54,6 +54,9 @@
   <script src="{{asset('assets/js/morris/raphael-2.1.0.min.js')}}"></script>
   <script src="{{asset('assets/js/morris/morris.js')}}"></script>
   <!--<script src="{{asset('assets/js/custom-scripts.js')}}"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-es_ES.min.js"></script>  
+
 	<script src="{{asset('assets/js/easypiechart.js')}}"></script>
 	<script src="{{asset('assets/js/easypiechart-data.js')}}"></script>
 	<script src="{{asset('assets/js/Lightweight-Chart/jquery.chart.js')}}"></script>
