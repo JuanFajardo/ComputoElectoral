@@ -153,7 +153,7 @@
         <td>{{ $dato->ci }}</td>
         <td>{{ $dato->celular }}</td>
         <td>  {{ $dato->codigo_persona }}</td>
-        <td><small> <b>{{ $dato->codigo_celular }}</b> <br> {{ date('d/m/Y H:i:s', strtotime($dato->update_at)) }}</small>  </td>
+        <td><small> <b>{{ $dato->codigo_celular }}</b> <br> {{ date('d/m/Y H:i:s', strtotime($dato->updated_at )) }}</small>  </td>
 
         <td>
           <a href="#modalModifiar"  data-toggle="modal" data-target="" class="btn btn-warning actualizar" style="color: #176F05;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;
@@ -194,7 +194,7 @@
     });
   });
 
-  $('#celular_').click(function(){
+  $('#celular_').focus(function(){
     var random  =  parseInt( Math.random() * 100000 );
     $('#codigo_persona_').val( random );
   });
