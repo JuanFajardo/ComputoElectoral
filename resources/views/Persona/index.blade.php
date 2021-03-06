@@ -132,9 +132,10 @@
   <thead>
     <tr>
       <th>Id</th>
+      <th>Recinto</th>
       <th>Persona</th>
-      <th>CI</th>
       <th>Celular</th>
+      <th>CI</th>
       <th>Codigo</th>
       <th>Activo</th>
       <th>Acciones</th>
@@ -149,9 +150,10 @@
       @endif
 
         <td>{{ $dato->id }}</td>
+        <td> <samp> <b>Mesa: {{ $dato->mesa }}</b> <br>  {{ $dato->recinto }}</samp>   </td>
         <td>{{ $dato->persona }}</td>
-        <td>{{ $dato->ci }}</td>
         <td>{{ $dato->celular }}</td>
+        <td>{{ $dato->ci }}</td>
         <td>  {{ $dato->codigo_persona }}</td>
         <td><small> <b>{{ $dato->codigo_celular }}</b> <br> {{ date('d/m/Y H:i:s', strtotime($dato->updated_at )) }}</small>  </td>
 

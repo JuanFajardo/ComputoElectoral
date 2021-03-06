@@ -9,7 +9,10 @@ class PersonaController extends Controller
 {
 
   public function index(Request $request){
-    $datos = Persona::all();
+    $datos = Persona::Join('mesas', 'personas.id_mesa', '=', 'mesas.id')
+                      ->join('recintos', 'mesas.id_recinto', '=', 'recintos.id')
+                      ->select('personas.*', 'recintos.recinto', 'mesas.mesa')
+                      ->get();
 
     $recintos = \App\Mesa::Join('recintos', 'mesas.id_recinto', '=', 'recintos.id')
                           ->select('mesas.*', 'recintos.recinto')->orderBy('recintos.recinto', 'asc' )->orderBy('mesas.id', 'asc' )->get();
