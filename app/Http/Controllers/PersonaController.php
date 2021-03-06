@@ -50,14 +50,16 @@ class PersonaController extends Controller
     }
   }
   public function revisar($ci, $codigo){
-    $dato  = Persona::Where('ci','=', $ci)->where('codigo_persona', '=', $codigo)->wher('codigo_celular', '=', '0')->get();
+    $dato  = Persona::Where('ci','=', $ci)->where('codigo_persona', '=', $codigo)->where('codigo_celular', '=', '0')->get();
 
     if( count($dato) > 0 ){
-      $dato = array('respuesta'=>'SI', 'codigo'=>$dato[0]->id);
+      $id = $dato[0]->id;
 
-      $actualizar = Persona::find($dato->id);
-      $actualizar->codigo_celular = Request::ip();;
+      $actualizar = Persona::find($id);
+      $actualizar->codigo_celular = \Request::ip();;
       $actualizar->save();
+
+      $dato = array('respuesta'=>'SI', 'codigo'=>$id);
 
     }else{
       $dato = array('respuesta'=>'NO', 'codigo'=>'PUTORICHARD');
