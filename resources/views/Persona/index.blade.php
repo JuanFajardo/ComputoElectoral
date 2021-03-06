@@ -155,7 +155,12 @@
         <td>{{ $dato->celular }}</td>
         <td>{{ $dato->ci }}</td>
         <td>  {{ $dato->codigo_persona }}</td>
-        <td><small> <b>{{ $dato->codigo_celular }}</b> <br> {{ date('d/m/Y H:i:s', strtotime($dato->updated_at )) }}</small>  </td>
+        <td>
+          <small> <b>{{ $dato->codigo_celular }}</b>
+            @if($dato->codigo_celular == '0')
+            NO REGISTRADO
+            @endif
+            <br> {{ date('d/m/Y H:i:s', strtotime($dato->updated_at )) }}</small>  </td>
 
         <td>
           <a href="#modalModifiar"  data-toggle="modal" data-target="" class="btn btn-warning actualizar" style="color: #176F05;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;

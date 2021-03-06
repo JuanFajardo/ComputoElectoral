@@ -34,11 +34,11 @@
           </div>
           <div class="col-md-4">
             <label for="id_zona_" > <b><i>Zona</i></b> </label><br>
-            {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'form-control select2', 'placeholder'=>' ', 'id'=>'id_zona_', 'required']) !!}
+            {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'selectpicker', 'data-live-search'=>'true', 'placeholder'=>' ', 'id'=>'id_zona_', 'required']) !!}
           </div>
           <div class="col-md-4">
-            <label for="id_recinto_" > <b><i>Actividad</i></b> </label><br>
-            {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'form-control select2', 'placeholder'=>' ', 'id'=>'id_recinto_', 'required']) !!}
+            <label for="id_recinto_" > <b><i>Recinto</i></b> </label><br>
+            {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'selectpicker', 'data-live-search'=>'true', 'placeholder'=>' ', 'id'=>'id_recinto_', 'required']) !!}
           </div>
         </div>
 
@@ -80,11 +80,11 @@
                       </div>
                       <div class="col-md-4">
                         <label for="id_zona_" > <b><i>Zona</i></b> </label><br>
-                        {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'id_zona', 'required']) !!}
+                        {!! Form::select('id_zona', \App\Zona::pluck('zona', 'id'), null, ['class'=>'selectpicker', 'data-live-search'=>'true', 'placeholder'=>' ', 'id'=>'id_zona', 'required']) !!}
                       </div>
                       <div class="col-md-4">
                         <label for="id_recinto_" > <b><i>Recinto</i></b> </label><br>
-                        {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'id_recinto', 'required']) !!}
+                        {!! Form::select('id_recinto', \App\Recinto::pluck('recinto', 'id'), null, ['class'=>'selectpicker', 'data-live-search'=>'true', 'placeholder'=>' ', 'id'=>'id_recinto', 'required']) !!}
                       </div>
                     </div>
 
@@ -152,7 +152,7 @@
 
 @section('js')
 <script type="text/javascript">
-
+  $('.my-select').selectpicker();
   $(document).ready(function(){
     $('#tablaGamp').DataTable({
       "order": [[ 0, 'asc']],
