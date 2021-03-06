@@ -926,9 +926,8 @@ class DatabaseSeeder extends Seeder
         }
 
         $datos = [
-          ['id_mesa'=>'1', 'persona'=>'Juan Fajardo', 'celular'=>'73854298', 'ci'=>'6612330', 'codigo_persona'=>'789', 'codigo_celular'=>'154659-ADFGS'],
-          ['id_mesa'=>'2', 'persona'=>'Grvoer Tacuri', 'celular'=>'70476972', 'ci'=>'6600918', 'codigo_persona'=>'789', 'codigo_celular'=>'154659-ADFGS'],
-          ['id_mesa'=>'3', 'persona'=>'Chavito Richito', 'celular'=>'60466551', 'ci'=>'6680378', 'codigo_persona'=>'789', 'codigo_celular'=>'154659-ADFGS'],
+          ['id_mesa'=>'1', 'persona'=>'PRUEBA', 'celular'=>'73854298', 'ci'=>'prueba', 'codigo_persona'=>'123', 'codigo_celular'=>'0'],
+          ['id_mesa'=>'1', 'persona'=>'PRUEBA', 'celular'=>'73854298', 'ci'=>'prueba2', 'codigo_persona'=>'123', 'codigo_celular'=>'0'],
 
         ];
         foreach($datos as $dato){

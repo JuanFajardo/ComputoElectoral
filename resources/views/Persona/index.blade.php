@@ -26,25 +26,39 @@
       </div>
       <div class="modal-body panel-body">
         {!! Form::open(['accept-charset'=>'UTF-8', 'enctype'=>'multipart/form-data', 'method'=>'POST', 'files'=>true, 'autocomplete'=>'off', 'id'=>'form-insert'] ) !!}
+
+
         <div class="row">
           <div class="col-md-4">
-            <label for="apertura_" > <b><i>Apertura</i></b> </label>
-            {!! Form::text('apertura', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'apertura_', 'required']) !!}
+            <label for="id_mesa_" > <b><i>Mesa</i></b> </label>
+
+            <select class="form-control" name="id_mesa" id="id_mesa_" "required" placeholder="Elige">
+                @foreach($recintos as  $recinto)
+                  <option value="{{$recinto->id}}"> <small>{{$recinto->recinto}} <b>{{$recinto->mesa}}</b> </small> </option>
+                @endforeach
+            </select>
+
           </div>
-          <div class="col-md-8">
-            <label for="actividad_" > <b><i>Actividad</i></b> </label>
-            {!! Form::text('actividad', null, ['class'=>'form-control', 'placeholder'=>'Actividad', 'id'=>'actividad_', 'required']) !!}
+          <div class="col-md-4">
+            <label for="ci_" > <b><i>Carnet</i></b> </label>
+            {!! Form::text('ci', null, ['class'=>'form-control', 'placeholder'=>'CI', 'id'=>'ci_', 'required']) !!}
+          </div>
+          <div class="col-md-4">
+            <label for="persona_" > <b><i>Nombre Completo</i></b> </label>
+            {!! Form::text('persona', null, ['class'=>'form-control', 'placeholder'=>'Nombre Completo', 'id'=>'persona_', 'required']) !!}
           </div>
         </div>
+
         <div class="row">
-          <div class="col-md-4">
-            <label for="distrito_" > <b><i>Distrito</i></b> </label>
-            {!! Form::select('distrito', ['-1'=>'Chasquivillque', '0'=>'MD', '1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8', '9'=>'9', '10'=>'10', '11'=>'11', '12'=>'12', '13'=>'13', '14'=>'14', '15'=>'15', '16'=>'16', '17'=>'17', '18'=>'18', '19'=>'19', '20'=>'20' ], null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'distrito_', 'required']) !!}
+          <div class="col-md-6">
+            <label for="celular_" > <b><i>Celular</i></b> </label>
+            {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder'=>'Celular', 'id'=>'celular_', 'required']) !!}
           </div>
-          <div class="col-md-8">
-            <label for="presupuesto_" > <b><i>Presupuesto</i></b> </label>
-            {!! Form::text('presupuesto', null, ['class'=>'form-control', 'placeholder'=>'Presupuesto', 'id'=>'presupuesto_', 'required']) !!}
+          <div class="col-md-6">
+            <label for="codigo_persona_" > <b><i>Codigo</i></b> </label>
+            {!! Form::text('codigo_persona', null, ['class'=>'form-control', 'placeholder'=>'codigo', 'id'=>'codigo_persona_', 'required', 'readonly']) !!}
           </div>
+            {!! Form::hidden('codigo_celular', '0') !!}
         </div>
         <hr>
         {!! Form::hidden('id_user', '1') !!}
@@ -68,30 +82,33 @@
                     {!! Form::open(['route'=>['Persona.update', ':DATO_ID'], 'method'=>'PATCH', 'id'=>'form-update' ])!!}
                     <div class="row">
                       <div class="col-md-4">
-                        <label for="apertura" > <b><i>Apertura</i></b> </label>
-                        {!! Form::text('apertura', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'apertura', 'required']) !!}
+                        <label for="id_mesa" > <b><i>Mesa</i></b> </label>
+                        <select class="form-control" name="id_mesa" id="id_mesa" "required" placeholder="Elige">
+                            @foreach($recintos as  $recinto)
+                              <option value="{{$recinto->id}}"> <small>{{$recinto->recinto}} <b>{{$recinto->mesa}}</b> </small> </option>
+                            @endforeach
+                        </select>
                       </div>
-                      <div class="col-md-8">
-                        <label for="actividad" > <b><i>Actividad</i></b> </label>
-                        {!! Form::text('actividad', null, ['class'=>'form-control', 'placeholder'=>'Actividad', 'id'=>'actividad', 'required']) !!}
-                      </div>
-                    </div>
-                    <div class="row">
                       <div class="col-md-4">
-                        <label for="distrito" > <b><i>Distrito</i></b> </label>
-                        {!! Form::select('distrito', ['1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8', '9'=>'9', '10'=>'10', '11'=>'11', '12'=>'12', '13'=>'13', '14'=>'14', '15'=>'15', '16'=>'16', '17'=>'17', '18'=>'18', '19'=>'19', '20'=>'20' ], null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'distrito', 'required']) !!}
+                        <label for="ci" > <b><i>Carnet</i></b> </label>
+                        {!! Form::text('ci', null, ['class'=>'form-control', 'placeholder'=>'CI', 'id'=>'ci', 'required']) !!}
                       </div>
-                      <div class="col-md-8">
-                        <label for="presupuesto" > <b><i>Presupuesto</i></b> </label>
-                        {!! Form::text('presupuesto', null, ['class'=>'form-control', 'placeholder'=>'Presupuesto', 'id'=>'presupuesto', 'required']) !!}
+                      <div class="col-md-4">
+                        <label for="persona" > <b><i>Nombre Completo</i></b> </label>
+                        {!! Form::text('persona', null, ['class'=>'form-control', 'placeholder'=>'Nombre Completo', 'id'=>'persona', 'required']) !!}
                       </div>
                     </div>
-                    <br><br>
+
                     <div class="row">
-                      <div class="col-md-12">
-                        <label for="Observacion" > <b><i>Observacion</i></b> </label>
-                        {!! Form::text('observacion', null, ['class'=>'form-control', 'placeholder'=>'Observacion', 'id'=>'observacion', 'required']) !!}
+                      <div class="col-md-6">
+                        <label for="celular" > <b><i>Celular</i></b> </label>
+                        {!! Form::text('celular', null, ['class'=>'form-control', 'placeholder'=>'Celular', 'id'=>'celular', 'required']) !!}
                       </div>
+                      <div class="col-md-6">
+                        <label for="codigo_persona" > <b><i>Codigo</i></b> </label>
+                        {!! Form::text('codigo_persona', null, ['class'=>'form-control', 'placeholder'=>'codigo', 'id'=>'codigo_persona', 'required', 'readonly']) !!}
+                      </div>
+                        {!! Form::hidden('codigo_celular', '0') !!}
                     </div>
 
                     <hr>
@@ -119,19 +136,24 @@
       <th>Celular</th>
       <th>CI</th>
       <th>Codigo Persona</th>
-      <th>Codigo Celular</th>
+      <th>Activo</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     @foreach($datos as $dato)
-      <tr data-id="{{ $dato->id }}">
+      @if( $dato->codigo_celular == '0' )
+        <tr data-id="{{ $dato->id }}" style="background-color:#f86161;">
+      @else
+        <tr data-id="{{ $dato->id }}">
+      @endif
+
         <td>{{ $dato->id }}</td>
         <td>{{ $dato->persona }}</td>
         <td>{{ $dato->ci }}</td>
         <td>{{ $dato->celular }}</td>
-        <td>{{ $dato->codigo_persona }}</td>
-        <td>{{ $dato->codigo_celular }}</td>
+        <td>  {{ $dato->codigo_persona }}</td>
+        <td><small> <b>{{ $dato->codigo_celular }}</b> <br> {{ date('d/m/Y H:i:s', strtotime($dato->update_at)) }}</small>  </td>
 
         <td>
           <a href="#modalModifiar"  data-toggle="modal" data-target="" class="btn btn-warning actualizar" style="color: #176F05;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;
@@ -147,6 +169,7 @@
 
 @section('js')
 <script type="text/javascript">
+
   $(document).ready(function(){
     $('#tablaGamp').DataTable({
       "order": [[ 1, 'asc']],
@@ -171,6 +194,11 @@
     });
   });
 
+  $('#celular_').click(function(){
+    var random  =  parseInt( Math.random() * 100000 );
+    $('#codigo_persona_').val( random );
+  });
+
   $('.actualizar').click(function(event){
     event.preventDefault();
     var fila = $(this).parents('tr');
@@ -178,14 +206,18 @@
     var form = $('#form-update')
     var url = form.attr('action').replace(':DATO_ID', id);
     form.get(0).setAttribute('action', url);
-    link  = '{{ asset("/index.php/Proyecto/")}}/'+id;
+    link  = '{{ asset("/index.php/Persona/")}}/'+id;
     $.getJSON(link, function(data, textStatus) {
       if(data.length > 0){
         $.each(data, function(index, el) {
-          $('#apertura').val(el.apertura);
-          $('#actividad').val(el.actividad);
-          $('#distrito').val(el.distrito);
-          $('#presupuesto').val(el.presupuesto);
+
+          $('#id_mesa').val(el.id_mesa);
+          $('#persona').val(el.persona);
+          $('#celular').val(el.celular);
+          $('#ci').val(el.ci);
+          $('#codigo_persona').val(el.codigo_persona);
+
+
         });
       }
     });
