@@ -133,9 +133,9 @@
     <tr>
       <th>Id</th>
       <th>Persona</th>
-      <th>Celular</th>
       <th>CI</th>
-      <th>Codigo Persona</th>
+      <th>Celular</th>
+      <th>Codigo</th>
       <th>Activo</th>
       <th>Acciones</th>
     </tr>
