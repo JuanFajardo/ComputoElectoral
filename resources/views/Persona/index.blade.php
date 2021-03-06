@@ -177,7 +177,7 @@
   $(document).ready(function(){
 
     $('#tablaGamp').DataTable({
-      "order": [[ 1, 'asc']],
+      "order": [[ 0, 'desc']],
       "language": {
         "bDeferRender": true,
         "sEmtpyTable": "No ay registros",
