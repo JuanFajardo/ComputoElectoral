@@ -11,7 +11,7 @@
 
    @endsection
 
-@section('menuMesa')
+@section('menuGrafico')
  class="active-menu"
 @endsection
 
@@ -32,6 +32,15 @@
 @endif
 
 <div style="margin:0 auto;">
+<label class="btn btn-info btn-sm">Seleccione una opcion</label>
+<div class="container">
+  <a href="{{asset('index.php/VerVotoAlcalde')}}"><button class="alert alert-success">Votacion Alcalde</button></a>
+  <a href="{{asset('index.php/VerVotoConcejal')}}"><button class="alert alert-warning">Votacion Concejal</button></a>
+</div>
+
+
+<label class="btn btn-info btn-sm">Generar Grafico</label>
+
 <form class="form-horizontal" role="form" method="POST" action="{{ url('/VerGrafico') }}" autocomplete="off">
 
   <table class="table" id="mitabla" style="width:50%;">
@@ -39,35 +48,14 @@
     <tr>
       <td>Opcion</td>
       <td>
-        <select name="id_departamento" class="form-control">
+        <select name="tipo" class="form-control">
         <option>ALCALDE</option>
         <option>CONCEJAL</option>
         </select>
       </td>
     </tr>
-    <tr>
-      <td>Departamento</td>
-      <td>
-        <select name="id_departamento" class="form-control">
-        <option id="1">Potosi</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Provincia</td>
-      <td>
-        <select name="id_provincia" class="form-control">
-        <option id="1">Tomas Frias</option>
-        </select>
-      </td>
-      <tr>
-        <td>Municipio</td>
-        <td>
-          <select name="id_departamento" class="form-control">
-          <option id="1">Potosi</option>
-          </select>
-        </td>
-      </tr>
+
+
       <tr>
         <td>Distrito</td>
         <td>
