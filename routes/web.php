@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('gamp');
+    return ".";
 });
 
 Route::get('/Voto/votoVer/{id}', 'VotoController@votoVer');

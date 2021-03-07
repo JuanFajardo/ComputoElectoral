@@ -48,15 +48,21 @@
                     <div class="row">
                         {!! Form::hidden('id', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'idVoto', 'required']) !!}
                         {!! Form::hidden('id_persona', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'id_persona', 'required']) !!}
-                        {!! Form::hidden('id_mesa', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'id_mesa', 'required']) !!}
+
 
                         <div class="col-md-2">
                           <label for="tipo" > <b><i>Tipo</i></b> </label>
                           {!! Form::select('tipo', ['ALCALDE'=>'ALCALDE', 'CONCEJAL'=>'CONCEJAL'], null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'tipo', 'required']) !!}
                         </div>
                       <div class="col-md-4">
-                        <label for="mesa" > <b><i>Recinto y Mesa</i></b> </label>
-                        {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'mesa', 'required', 'readonly']) !!}
+                        <label for="id_mesa" > <b><i>Recinto y Mesa</i></b> </label>
+                        <select class="" name="id_mesa" id="id_mesa" "required"  class="selectpicker" data-live-search="true">
+                          @foreach($mesas as $mesa)
+                          <option value="{{$mesa->id}}"> {{$mesa->recinto}} -- {{$mesa->mesa}} </option>
+                          @endforeach
+                        </select>
+
+
                       </div>
                       <div class="col-md-4">
                         <label for="persona" > <b><i>Persona</i></b> </label>
@@ -231,6 +237,8 @@
 
 @section('js')
 <script type="text/javascript">
+$('.my-select').selectpicker();
+
   $(document).ready(function(){
     $('#tablaGamp').DataTable({
       "order": [[ 0, 'asc']],

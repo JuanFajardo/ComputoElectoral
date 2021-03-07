@@ -19,10 +19,13 @@ class VotoController extends Controller
               ->orderBy('votos.id', 'asc')
               ->get();
 
+    $mesas = \App\Mesa::Join('recintos', 'mesas.id_recinto', 'recintos.id')
+                        ->select('mesas.*', 'recintos.recinto')->get();
+
     if ($request->ajax()) {
       return $datos;
     }else{
-      return view('Voto.index', compact('datos'));
+      return view('Voto.index', compact('datos', 'mesas'));
     }
   }
 
@@ -77,6 +80,7 @@ class VotoController extends Controller
     $dato->total    = $request->total;
 
     $dato->tipo    = $request->tipo;
+    $dato->id_mesa    = $request->id_mesa;
 
     $dato->observacion = $request->observacion;
     $dato->save();
