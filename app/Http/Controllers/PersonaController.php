@@ -38,7 +38,10 @@ class PersonaController extends Controller
 
   public function update(Request $request, $id){
     $dato = Persona::find($id);
-    $dato->fill($request->all());
+    $dato->id_mesa = $request->id_mesa;
+    $dato->persona = $request->persona;
+    $dato->celular = $request->celular;
+    //$dato->fill($request->all());
     $dato->save();
     return redirect('/Persona');
   }

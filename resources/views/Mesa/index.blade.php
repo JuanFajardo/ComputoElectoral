@@ -55,6 +55,7 @@
 
         <hr>
         {!! Form::hidden('id_user', '1') !!}
+        {!! Form::hidden('observacion', ' ') !!}
         {!! Form::submit('A&ntilde;adir', ['class'=>'agregar btn btn-primary']) !!}
         {!! Form::close() !!}
       </div>
@@ -93,9 +94,13 @@
                         <label for="mesa_" > <b><i>Mesa</i></b> </label>
                         {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'Mesa', 'id'=>'mesa', 'required']) !!}
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-md-4">
                         <label for="habilitados_" > <b><i>Habilitado</i></b> </label>
                         {!! Form::text('habilitados', null, ['class'=>'form-control', 'placeholder'=>'Habilitados', 'id'=>'habilitados', 'required']) !!}
+                      </div>
+                      <div class="col-md-4">
+                        <label for="observacion_" > <b><i>Observacion</i></b> </label>
+                        {!! Form::text('habilitados', null, ['class'=>'form-control', 'placeholder'=>'observacion', 'id'=>'observacion', 'required']) !!}
                       </div>
                     </div>
 
@@ -121,23 +126,41 @@
 
     <tr>
       <th>Id</th>
-      <th>Distrito</th>
       <th>Zona</th>
       <th>Recinto</th>
       <th>Mesa</th>
       <th>Habilitado</th>
+      <th>Votos</th>
+
+      <th>Observacion</th>
       <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
     @foreach($datos as $dato)
-      <tr data-id="{{ $dato->id }}">
+
+        @if($dato->contador == '1')
+          <tr data-id="{{ $dato->id }}" style="background-color: #FFC300 ;">
+        @elseif($dato->contador == '2')
+          <tr data-id="{{ $dato->id }}" style="background-color: #FF5733  ;">
+        @else
+          <tr data-id="{{ $dato->id }}">
+        @endif
         <td>{{ $dato->id }}</td>
-        <td>{{ $dato->distrito }}</td>
         <td>{{ $dato->zona }}</td>
         <td>{{ $dato->recinto }}</td>
         <td>{{ $dato->mesa }}</td>
         <td>{{ $dato->habilitados }}</td>
+        <td>
+          @if($dato->contador == '1')
+            1 Votos
+          @elseif($dato->contador == '2')
+            2 Votos
+          @else
+            0 Votos
+          @endif
+        </td>
+        <td>{{ $dato->observacion }}</td>
         <td>
           <a href="#modalModifiar"  data-toggle="modal" data-target="" class="btn btn-warning actualizar" style="color: #176F05;"> <li class="fa fa-edit"></li>Editar</a> &nbsp;&nbsp;&nbsp;
         </td>
@@ -192,7 +215,7 @@
           $("#id_distrito option[value="+el.id_distrito+"]").attr('selected', 'selected');
           $("#id_zona option[value="+el.id_zona+"]").attr('selected', 'selected');
           $("#id_recinto option[value="+el.id_recinto+"]").attr('selected', 'selected');
-
+          $('#observacion').val(el.observacion);
           $('#mesa').val(el.mesa);
           $('#habilitados').val(el.habilitados);
         });

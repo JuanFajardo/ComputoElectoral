@@ -30,14 +30,20 @@
                         {!! Form::hidden('id', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'idVoto', 'required']) !!}
                         {!! Form::hidden('id_persona', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'id_persona', 'required']) !!}
                         {!! Form::hidden('id_mesa', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'id_mesa', 'required']) !!}
-                      <div class="col-md-6">
+
+                        <div class="col-md-2">
+                          <label for="tipo" > <b><i>Tipo</i></b> </label>
+                          {!! Form::select('tipo', ['ALCALDE'=>'ALCALDE', 'CONCEJAL'=>'CONCEJAL'], null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'tipo', 'required']) !!}
+                        </div>
+                      <div class="col-md-4">
                         <label for="mesa" > <b><i>Recinto y Mesa</i></b> </label>
-                        {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'mesa', 'required']) !!}
+                        {!! Form::text('mesa', null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'mesa', 'required', 'readonly']) !!}
                       </div>
-                      <div class="col-md-6">
-                        <label for="persona" > <b><i>Apertura</i></b> </label>
-                        {!! Form::text('persona', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'persona', 'required']) !!}
+                      <div class="col-md-4">
+                        <label for="persona" > <b><i>Persona</i></b> </label>
+                        {!! Form::text('persona', null, ['class'=>'form-control', 'placeholder'=>'Apertura', 'id'=>'persona', 'required', 'readonly']) !!}
                       </div>
+
                     </div>
 
                     <div class="row">
@@ -116,9 +122,13 @@
                         <label for="blanco" > <b><i>blanco</i></b> </label>
                         {!! Form::text('blanco', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'blanco', 'required']) !!}
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-2">
                         <label for="total" > <b><i>total</i></b> </label>
                         {!! Form::text('total', null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'total', 'required']) !!}
+                      </div>
+                      <div class="col-md-2">
+                        <label for="habilitados" > <b><i>Habilitado</i></b> </label>
+                        {!! Form::text('habilitados',  null, ['class'=>'form-control', 'placeholder'=>'', 'id'=>'habilitados', 'required', 'readonly']) !!}
                       </div>
                     </div>
 
@@ -150,6 +160,7 @@
 <table id="tablaGamp" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Tipo</th>
       <th>Zona</th>
       <th>Recinto</th>
@@ -170,6 +181,7 @@
     @else
       <tr data-id="{{ $dato->id }}">
     @endif
+      <td>{{ $dato->id }}</td>
         <td>{{ $dato->tipo }}</td>
         <td>{{ $dato->zona }}</td>
         <td>{{ $dato->recinto }}</td>
@@ -229,7 +241,7 @@
       if(data.length > 0){
         $.each(data, function(index, el) {
 
-            $('#idVoto').val(el.votoId);
+          $('#idVoto').val(el.votoId);
 
           $('#id_mesa').val(el.id_mesa);
           $('#id_persona').val(el.id_persona);
@@ -249,6 +261,9 @@
           $('#nulo').val(el.nulo);
           $('#blanco').val(el.blanco);
           $('#total').val(el.total);
+
+          $('#tipo').val(el.tipo);
+          $('#habilitados').val(el.habilitados);
 
           $('#mesa').val(el.recinto+" "+el.mesa);
           $('#persona').val(el.persona);

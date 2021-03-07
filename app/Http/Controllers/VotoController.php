@@ -72,6 +72,8 @@ class VotoController extends Controller
     $dato->blanco   = $request->blanco;
     $dato->total    = $request->total;
 
+    $dato->tipo    = $request->tipo;
+
     $dato->observacion = $request->observacion;
     $dato->save();
     return redirect('/Voto');
