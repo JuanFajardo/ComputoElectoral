@@ -11,7 +11,7 @@ class Log extends Model
 
 
         public function setFotoAttribute($foto){
-          $this->attributes['Foto'] = md5(date('Y_m_d_H_i_s_')).'_'.$foto->getClientOriginalName();
+          $this->attributes['foto'] = md5(date('Y_m_d_H_i_s_')).'_'.$foto->getClientOriginalName();
           $name = md5(date('Y_m_d_H_i_s_')).'_'.$foto->getClientOriginalName();
           \Storage::disk('local')->put($name, \File::get($foto));
         }
