@@ -15,7 +15,26 @@
  class="active-menu"
 @endsection
 
+
 @section('modal2')
+
+<style>
+
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}
+
+</style>
+
     <div id="modalModifiar" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content panel panel-warning ">
@@ -49,7 +68,7 @@
                     <div class="row">
 
                       <div class="col-md-12">
-                        <center><img  id="imagen" width="450"></center>
+                        <center><img  id="imagen" style="heigth:90%"></center>
                       </div>
 
                     </div>
@@ -124,7 +143,7 @@
                       </div>
                       <div class="col-md-2">
                         <label for="total" > <b><i>total</i></b> </label>
-                        {!! Form::text('total', null, ['class'=>'form-control', 'placeholder'=>' ', 'id'=>'total', 'required']) !!}
+                        {!! Form::text('total', null, ['class'=>'voto form-control', 'placeholder'=>' ', 'id'=>'total', 'required']) !!}
                       </div>
                       <div class="col-md-2">
                         <label for="habilitados" > <b><i>Habilitado</i></b> </label>
@@ -157,6 +176,17 @@
     alert("La contraseña se actualizo correctamente");
   </script>
 @endif
+
+@if(Session::has('mensaje'))
+<div class="alert alert-danger">
+  {{Session::get('mensaje')}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
+
 <table id="tablaGamp" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
   <thead>
     <tr>

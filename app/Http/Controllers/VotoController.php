@@ -55,6 +55,10 @@ class VotoController extends Controller
     //return $request->all();
     $dato = Voto::find($request->id);
 
+    if($request->total>220)
+    return redirect('/Voto')->with("mensaje","El total sobrepasa el limite de la mesa vuelva a verificar la mesa");
+    $dato = Voto::find($request->id);
+    $dato->aceptado =10;
     $dato->als      = $request->als;
     $dato->pan      = $request->pan;
     $dato->cc       = $request->cc;
@@ -122,24 +126,24 @@ public function VerGrafico(Request $request)
 {
   $tipo=$request->tipo;
 
-  $mop=Voto::where("tipo",$tipo)->sum("mop");//1
-  $puka=Voto::where("tipo",$tipo)->sum("puka");//2
-  $fpv=Voto::where("tipo",$tipo)->sum("fpv");//3
-  $jap=Voto::where("tipo",$tipo)->sum("jap");//4
-  $ucs=Voto::where("tipo",$tipo)->sum("ucs");//6
-  $panbol=Voto::where("tipo",$tipo)->sum("pan");//5
-  $mas=Voto::where("tipo",$tipo)->sum("mas");//7
-  $mcp=Voto::where("tipo",$tipo)->sum("mcp");//8
-  $mds=Voto::where("tipo",$tipo)->sum("mds");//9
-  $mts=Voto::where("tipo",$tipo)->sum("mts");//10
-  $cc=Voto::where("tipo",$tipo)->sum("cc");//11
-  $as=Voto::where("tipo",$tipo)->sum("als");//12
-  $adn=Voto::where("tipo",$tipo)->sum("adn");//13
-  $nulo=Voto::where("tipo",$tipo)->sum("nulo");//14
-  $blanco=Voto::where("tipo",$tipo)->sum("blanco");//15
+  $mop=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mop");//1
+  $puka=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("puka");//2
+  $fpv=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("fpv");//3
+  $jap=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("jap");//4
+  $ucs=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("ucs");//6
+  $panbol=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("pan");//5
+  $mas=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mas");//7
+  $mcp=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mcp");//8
+  $mds=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mds");//9
+  $mts=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mts");//10
+  $cc=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("cc");//11
+  $as=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("als");//12
+  $adn=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("adn");//13
+  $nulo=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("nulo");//14
+  $blanco=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("blanco");//15
   $total=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn+$nulo+$blanco;
   $validos=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn;
-  $conteo=Voto::where("tipo",$tipo)->count("id");
+  $conteo=Voto::where("tipo",$tipo)->where("aceptado",10)->count("id");
   $mesas=Mesa::count("id");
   $porcentaje=($conteo*100)/$mesas;
   $porcentaje=round($porcentaje,2);
@@ -149,26 +153,26 @@ public function VerGrafico(Request $request)
 
 public function ContarVotos($tipo)
 {
-  $mop=Voto::where("tipo",$tipo)->sum("mop");//1
-  $puka=Voto::where("tipo",$tipo)->sum("puka");//2
-  $fpv=Voto::where("tipo",$tipo)->sum("fpv");//3
-  $jap=Voto::where("tipo",$tipo)->sum("jap");//4
-  $panbol=Voto::where("tipo",$tipo)->sum("pan");//5
-  $uc=Voto::where("tipo",$tipo)->sum("ucs");//6
+  $mop=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mop");//1
+  $puka=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("puka");//2
+  $fpv=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("fpv");//3
+  $jap=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("jap");//4
+  $panbol=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("pan");//5
+  $uc=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("ucs");//6
 
-  $mas=Voto::where("tipo",$tipo)->sum("mas");//7
-  $mcp=Voto::where("tipo",$tipo)->sum("mcp");//8
-  $mds=Voto::where("tipo",$tipo)->sum("mds");//9
-  $mts=Voto::where("tipo",$tipo)->sum("mts");//10
-  $cc=Voto::where("tipo",$tipo)->sum("cc");//11
-  $as=Voto::where("tipo",$tipo)->sum("als");//12
-  $adn=Voto::where("tipo",$tipo)->sum("adn");//13
-  $nulo=Voto::where("tipo",$tipo)->sum("nulo");//14
+  $mas=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mas");//7
+  $mcp=Voto::where("tipo",$tipo)->where("aceptado",10)->where("aceptado",10)->sum("mcp");//8
+  $mds=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mds");//9
+  $mts=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mts");//10
+  $cc=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("cc");//11
+  $as=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("als");//12
+  $adn=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("adn");//13
+  $nulo=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("nulo");//14
   $blanco=Voto::where("tipo",$tipo)->sum("blanco");//15
   $total=$mop+$puka+$fpv+$jap+$panbol+$uc+$mas+$mcp+$mds+$mts+$cc+$as+$adn+$nulo+$blanco;
   $validos=$mop+$puka+$fpv+$jap+$panbol+$uc+$mas+$mcp+$mds+$mts+$cc+$as+$adn;
 
-  $conteo=Voto::where("tipo",$tipo)->count("id");
+  $conteo=Voto::where("tipo",$tipo)->where("aceptado",10)->count("id");
   $mesas=Mesa::count("id");
   $porcentaje=($conteo*100)/$mesas;
   $porcentaje=round($porcentaje,2);
@@ -204,24 +208,24 @@ public function VerVotoAlcalde()
 {
   $tipo="ALCALDE";
 
-  $mop=Voto::where("tipo",$tipo)->sum("mop");//1
-  $puka=Voto::where("tipo",$tipo)->sum("puka");//2
-  $fpv=Voto::where("tipo",$tipo)->sum("fpv");//3
-  $jap=Voto::where("tipo",$tipo)->sum("jap");//4
-  $ucs=Voto::where("tipo",$tipo)->sum("ucs");//6
-  $panbol=Voto::where("tipo",$tipo)->sum("pan");//5
-  $mas=Voto::where("tipo",$tipo)->sum("mas");//7
-  $mcp=Voto::where("tipo",$tipo)->sum("mcp");//8
-  $mds=Voto::where("tipo",$tipo)->sum("mds");//9
-  $mts=Voto::where("tipo",$tipo)->sum("mts");//10
-  $cc=Voto::where("tipo",$tipo)->sum("cc");//11
-  $as=Voto::where("tipo",$tipo)->sum("als");//12
-  $adn=Voto::where("tipo",$tipo)->sum("adn");//13
-  $nulo=Voto::where("tipo",$tipo)->sum("nulo");//14
-  $blanco=Voto::where("tipo",$tipo)->sum("blanco");//15
+  $mop=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mop");//1
+  $puka=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("puka");//2
+  $fpv=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("fpv");//3
+  $jap=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("jap");//4
+  $ucs=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("ucs");//6
+  $panbol=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("pan");//5
+  $mas=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mas");//7
+  $mcp=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mcp");//8
+  $mds=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mds");//9
+  $mts=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mts");//10
+  $cc=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("cc");//11
+  $as=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("als");//12
+  $adn=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("adn");//13
+  $nulo=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("nulo");//14
+  $blanco=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("blanco");//15
   $total=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn+$nulo+$blanco;
   $validos=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn;
-  $conteo=Voto::where("tipo",$tipo)->count("id");
+  $conteo=Voto::where("tipo",$tipo)->where("aceptado",10)->count("id");
   $mesas=Mesa::count("id");
   $porcentaje=($conteo*100)/$mesas;
   $porcentaje=round($porcentaje,2);
@@ -233,25 +237,25 @@ public function VerVotoConcejal()
 {
   $tipo="CONCEJAL";
 
-  $mop=Voto::where("tipo",$tipo)->sum("mop");//1
-  $puka=Voto::where("tipo",$tipo)->sum("puka");//2
-  $fpv=Voto::where("tipo",$tipo)->sum("fpv");//3
-  $jap=Voto::where("tipo",$tipo)->sum("jap");//4
-  $ucs=Voto::where("tipo",$tipo)->sum("ucs");//6
-  $panbol=Voto::where("tipo",$tipo)->sum("pan");//5
-  $mas=Voto::where("tipo",$tipo)->sum("mas");//7
-  $mcp=Voto::where("tipo",$tipo)->sum("mcp");//8
-  $mds=Voto::where("tipo",$tipo)->sum("mds");//9
-  $mts=Voto::where("tipo",$tipo)->sum("mts");//10
-  $cc=Voto::where("tipo",$tipo)->sum("cc");//11
-  $as=Voto::where("tipo",$tipo)->sum("als");//12
-  $adn=Voto::where("tipo",$tipo)->sum("adn");//13
-  $nulo=Voto::where("tipo",$tipo)->sum("nulo");//14
-  $blanco=Voto::where("tipo",$tipo)->sum("blanco");//15
+  $mop=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mop");//1
+  $puka=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("puka");//2
+  $fpv=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("fpv");//3
+  $jap=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("jap");//4
+  $ucs=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("ucs");//6
+  $panbol=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("pan");//5
+  $mas=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mas");//7
+  $mcp=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mcp");//8
+  $mds=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mds");//9
+  $mts=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("mts");//10
+  $cc=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("cc");//11
+  $as=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("als");//12
+  $adn=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("adn");//13
+  $nulo=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("nulo");//14
+  $blanco=Voto::where("tipo",$tipo)->where("aceptado",10)->sum("blanco");//15
   $total=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn+$nulo+$blanco;
   $validos=$mop+$puka+$fpv+$jap+$panbol+$ucs+$mas+$mcp+$mds+$mts+$cc+$as+$adn;
-  $conteo=Voto::where("tipo",$tipo)->count("id");
-  $mesas=Mesa::count("id");
+  $conteo=Voto::where("tipo",$tipo)->where("aceptado",10)->count("id");
+  $mesas=Mesa::count("id");// agragar un campo para diferenciar mesa alcalde/concejal
   $porcentaje=($conteo*100)/$mesas;
   $porcentaje=round($porcentaje,2);
   $grafico=round($porcentaje,PHP_ROUND_HALF_EVEN);
@@ -259,4 +263,3 @@ public function VerVotoConcejal()
 }
 
 }
-
